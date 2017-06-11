@@ -80,14 +80,14 @@ class Controller:
     def update(self, pose=None):
         vrsys = openvr.VRSystem()
         if pose:
-            result, pControllerState = vrsys.getControllerState(self.id,
-                                                                            openvr.TrackingUniverseSeated
-                                                                            )
+            result, pControllerState = vrsys.getControllerState(self.id)
+                                                                        #    openvr.TrackingUniverseSeated
+                                                                        #    )
             self.x = pose.mDeviceToAbsoluteTracking[0][3]
             self.y = pose.mDeviceToAbsoluteTracking[1][3]
             self.z = pose.mDeviceToAbsoluteTracking[2][3]
 
-            self.axis = pControllerState.rAxis[0].x
+            self.axis = pControllerState.rAxis[1].x
             self.valid = pose.bPoseIsValid
 
     def __repr__(self):
