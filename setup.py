@@ -19,6 +19,7 @@ setup(
 
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
+    #install_requires=['openvr==1.0.301', 'numpy'],
     install_requires=['openvr', 'numpy'],
 
 

@@ -5,10 +5,8 @@ openvr.init(openvr.VRApplication_Background)
 while True:
     print()
     for c in range(16):
-        result, pControllerState, pTrackedDevicePose = openvr.VRSystem().getControllerStateWithPose(c,
-                                                                                              openvr.TrackingUniverseSeated,
-                                                                                       )
-        print(pControllerState.rAxis[0], dir(pControllerState.rAxis[0]))
+        result, pControllerState = openvr.VRSystem().getControllerState(c)
         for i in pControllerState.rAxis:
-            print(i.x, i.y)
+            if i.x != 0 or i.y != 0:
+                print(i.x, i.y)
 
