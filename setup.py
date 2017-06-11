@@ -5,10 +5,10 @@ https://packaging.python.org/en/latest/distributing.html
 https://github.com/pypa/sampleproject
 """
 
+
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 # To use a consistent encoding
-
 
 setup(
     name='steam_vr_wheel',
@@ -36,7 +36,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'wheel=steam_vr_wheel.wheel:main',
+            'vrwheel=steam_vr_wheel.wheel:main',
         ],
     },
 )
