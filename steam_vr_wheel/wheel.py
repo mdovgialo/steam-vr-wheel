@@ -7,7 +7,7 @@ import time
 from collections import deque
 
 
-FREQUENCY = 60
+FREQUENCY = 100
 BUTTONS = {}
 BUTTONS['left'] = {openvr.k_EButton_ApplicationMenu: 1, openvr.k_EButton_Grip: 2, openvr.k_EButton_SteamVR_Touchpad: 3,
                    openvr.k_EButton_SteamVR_Trigger: 4
@@ -81,8 +81,7 @@ class Controller:
         vrsys = openvr.VRSystem()
         result, pControllerState, pose = vrsys.getControllerStateWithPose(openvr.TrackingUniverseSeated,
                                                                           self.id)
-                                                                    #
-                                                                    #    )
+
         self.x = pose.mDeviceToAbsoluteTracking[0][3]
         self.y = pose.mDeviceToAbsoluteTracking[1][3]
         self.z = pose.mDeviceToAbsoluteTracking[2][3]
