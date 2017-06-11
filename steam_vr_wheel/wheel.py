@@ -77,18 +77,18 @@ class Controller:
         self.name = name
         self.update()
 
-    def update(self, pose=None):
+    def update(self):
         vrsys = openvr.VRSystem()
-        if pose:
-            result, pControllerState = vrsys.getControllerState(self.id)
-                                                                        #    openvr.TrackingUniverseSeated
-                                                                        #    )
-            self.x = pose.mDeviceToAbsoluteTracking[0][3]
-            self.y = pose.mDeviceToAbsoluteTracking[1][3]
-            self.z = pose.mDeviceToAbsoluteTracking[2][3]
+        result, pControllerState, pose = vrsys.getControllerStateWithPose(openvr.TrackingUniverseSeated,
+                                                                          self.id)
+                                                                    #
+                                                                    #    )
+        self.x = pose.mDeviceToAbsoluteTracking[0][3]
+        self.y = pose.mDeviceToAbsoluteTracking[1][3]
+        self.z = pose.mDeviceToAbsoluteTracking[2][3]
 
-            self.axis = pControllerState.rAxis[1].x
-            self.valid = pose.bPoseIsValid
+        self.axis = pControllerState.rAxis[1].x
+        self.valid = pose.bPoseIsValid
 
     def __repr__(self):
         return '<{} {} Controller position x={}, y={}, z={}, axis={} valid={}>'.format(self.name,
@@ -99,19 +99,16 @@ class Controller:
                                                                                        self.axis,
                                                                                        self.valid)
 
-def do_work(vrsystem, left_controller: Controller, right_controller: Controller, wheel: Wheel, poses):
-    vrsystem.getDeviceToAbsoluteTrackingPose(openvr.TrackingUniverseSeated, 0, len(poses), poses)
-    left_controller.update(pose=poses[left_controller.id.value])
-    right_controller.update(pose=poses[right_controller.id.value])
+def do_work(vrsystem, left_controller: Controller, right_controller: Controller, wheel: Wheel):
+    left_controller.update()
+    right_controller.update()
     wheel.update(left_controller, right_controller)
     event = openvr.VREvent_t()
     while vrsystem.pollNextEvent(event):
-        role = vrsystem.getControllerRoleForTrackedDeviceIndex(event.trackedDeviceIndex)
-        hand = None
-        if role == openvr.TrackedControllerRole_RightHand:
-            hand = 'right'
-        if role == openvr.TrackedControllerRole_LeftHand:
+        if event.trackedDeviceIndex == left_controller.id.value:
             hand = 'left'
+        if event.trackedDeviceIndex == right_controller.id.value:
+            hand = 'right'
         if event.eventType == openvr.VREvent_ButtonPress:
             button = event.data.controller.button
             wheel.set_button_press(button, hand)
@@ -121,32 +118,28 @@ def do_work(vrsystem, left_controller: Controller, right_controller: Controller,
 
 
 
-def get_controller_ids(poses):
+def get_controller_ids():
     vrsys = openvr.VRSystem()
-    for i in range(len(poses)):
+    print('Searching for left and right hand controllers')
+    for i in range(openvr.k_unMaxTrackedDeviceCount):
         device_class = vrsys.getTrackedDeviceClass(i)
-        print(device_class)
         if device_class == openvr.TrackedDeviceClass_Controller:
-            role = openvr.VRSystem().getControllerRoleForTrackedDeviceIndex(i)
+            role = vrsys.getControllerRoleForTrackedDeviceIndex(i)
             if role == openvr.TrackedControllerRole_RightHand:
                  right = i
             if role == openvr.TrackedControllerRole_LeftHand:
                  left = i
+    print('left and right hands found')
     return left, right
 
 
 def main():
     openvr.init(openvr.VRApplication_Background)
-    poses_t = openvr.TrackedDevicePose_t * openvr.k_unMaxTrackedDeviceCount
-    poses = poses_t()
     vrsystem = openvr.VRSystem()
-
-
     hands_got = False
     while not hands_got:
-        vrsystem.getDeviceToAbsoluteTrackingPose(openvr.TrackingUniverseSeated, 0, len(poses), poses)
         try:
-            left, right = get_controller_ids(poses)
+            left, right = get_controller_ids()
             hands_got = True
         except NameError:
             pass
@@ -157,7 +150,7 @@ def main():
     wheel = Wheel()
     while True:
         before_work = time.time()
-        do_work(vrsystem, left_controller, right_controller, wheel, poses)
+        do_work(vrsystem, left_controller, right_controller, wheel)
         after_work = time.time()
         left = 1/FREQUENCY - (after_work - before_work)
         if left>0:
