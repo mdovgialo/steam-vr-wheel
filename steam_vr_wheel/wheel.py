@@ -1,4 +1,4 @@
-from math import pi, atan2, isclose
+from math import pi, atan2
 
 import numpy as np
 import openvr
