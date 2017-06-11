@@ -1,8 +1,7 @@
 # steam-vr-wheel
 Wheel emulation using steamVR
 =============================
-VERY EARLY VERSION, ONLY BUTTONS ARE PROVEN TO WORK, NO AXES YET.
-
+Everything should work.
 Requires pyopenvr, and vjoy ( http://vjoystick.sourceforge.net/site/ Public domain )
 
 Uses pyvjoy binding from https://github.com/tidzo/pyvjoy
