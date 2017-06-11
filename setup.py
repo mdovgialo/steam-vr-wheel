@@ -19,7 +19,7 @@ setup(
 
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
-    install_requires=['openvr'],
+    install_requires=['openvr', 'numpy'],
 
 
     # If there are data files included in your packages that need to be
