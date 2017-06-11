@@ -19,9 +19,6 @@ write:
 
 pip install .
 
-if doesnt work try:
-
-pip install -e .
 
 
 
