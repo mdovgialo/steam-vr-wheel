@@ -7,7 +7,7 @@ import time
 from collections import deque
 
 
-FREQUENCY = 100
+FREQUENCY = 60
 BUTTONS = {}
 BUTTONS['left'] = {openvr.k_EButton_ApplicationMenu: 1, openvr.k_EButton_Grip: 2, openvr.k_EButton_SteamVR_Touchpad: 3,
                    openvr.k_EButton_SteamVR_Trigger: 4
@@ -73,14 +73,12 @@ class Controller:
         self.id = openvr.TrackedDeviceIndex_t(id)
 
         self.axis = 0
-        self.x, self.y, self.z = 0, 0 , 0
+        self.x, self.y, self.z = 0, 0, 0
         self.name = name
-        self.update()
 
-    def update(self):
+    def update(self, pose):
         vrsys = openvr.VRSystem()
-        result, pControllerState, pose = vrsys.getControllerStateWithPose(openvr.TrackingUniverseSeated,
-                                                                          self.id)
+        result, pControllerState = vrsys.getControllerState(self.id)
 
         self.x = pose.mDeviceToAbsoluteTracking[0][3]
         self.y = pose.mDeviceToAbsoluteTracking[1][3]
@@ -98,28 +96,30 @@ class Controller:
                                                                                        self.axis,
                                                                                        self.valid)
 
-def do_work(vrsystem, left_controller: Controller, right_controller: Controller, wheel: Wheel):
-    left_controller.update()
-    right_controller.update()
+def do_work(vrsystem, left_controller: Controller, right_controller: Controller, wheel: Wheel, poses):
+    vrsystem.getDeviceToAbsoluteTrackingPose(openvr.TrackingUniverseSeated, 0, len(poses), poses)
+    left_controller.update(poses[left_controller.id.value])
+    right_controller.update(poses[right_controller.id.value])
     wheel.update(left_controller, right_controller)
     event = openvr.VREvent_t()
     while vrsystem.pollNextEvent(event):
+        hand = None
         if event.trackedDeviceIndex == left_controller.id.value:
             hand = 'left'
         if event.trackedDeviceIndex == right_controller.id.value:
             hand = 'right'
-        if event.eventType == openvr.VREvent_ButtonPress:
-            button = event.data.controller.button
-            wheel.set_button_press(button, hand)
-        if event.eventType == openvr.VREvent_ButtonUnpress:
-            button = event.data.controller.button
-            wheel.set_button_unpress(button, hand)
+        if hand:
+            if event.eventType == openvr.VREvent_ButtonPress:
+                button = event.data.controller.button
+                wheel.set_button_press(button, hand)
+            if event.eventType == openvr.VREvent_ButtonUnpress:
+                button = event.data.controller.button
+                wheel.set_button_unpress(button, hand)
 
 
 
 def get_controller_ids():
     vrsys = openvr.VRSystem()
-    print('Searching for left and right hand controllers')
     for i in range(openvr.k_unMaxTrackedDeviceCount):
         device_class = vrsys.getTrackedDeviceClass(i)
         if device_class == openvr.TrackedDeviceClass_Controller:
@@ -128,7 +128,6 @@ def get_controller_ids():
                  right = i
             if role == openvr.TrackedControllerRole_LeftHand:
                  left = i
-    print('left and right hands found')
     return left, right
 
 
@@ -138,8 +137,10 @@ def main():
     hands_got = False
     while not hands_got:
         try:
+            print('Searching for left and right hand controllers')
             left, right = get_controller_ids()
             hands_got = True
+            print('left and right hands found')
         except NameError:
             pass
         time.sleep(0.1)
@@ -147,9 +148,11 @@ def main():
     left_controller = Controller(left, name='left', vrsys=vrsystem)
     right_controller = Controller(right, name='right', vrsys=vrsystem)
     wheel = Wheel()
+    poses_t = openvr.TrackedDevicePose_t * openvr.k_unMaxTrackedDeviceCount
+    poses = poses_t()
     while True:
         before_work = time.time()
-        do_work(vrsystem, left_controller, right_controller, wheel)
+        do_work(vrsystem, left_controller, right_controller, wheel, poses)
         after_work = time.time()
         left = 1/FREQUENCY - (after_work - before_work)
         if left>0:
