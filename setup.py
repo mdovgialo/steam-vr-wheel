@@ -46,6 +46,8 @@ setup(
     entry_points={
         'console_scripts': [
             'vrwheel=steam_vr_wheel.wheel:main',
+            'vrjoystick=steam_vr_wheel.joystick:main_j',
+            'vrpad=steam_vr_wheel.pad:main_p',
         ],
     },
 )

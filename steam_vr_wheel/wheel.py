@@ -1,112 +1,48 @@
-from math import pi, atan2
-
-import numpy as np
-import openvr
-from .pyvjoy.vjoydevice import VJoyDevice, HID_USAGE_X, HID_USAGE_RX, HID_USAGE_RY
 import time
-from collections import deque
 
+import openvr
+
+from steam_vr_wheel._joystick import Joystick
+from steam_vr_wheel._virtualpad import VirtualPad
+from steam_vr_wheel._wheel import Wheel
+from steam_vr_wheel.vrcontroller import Controller
 
 FREQUENCY = 60
-BUTTONS = {}
-BUTTONS['left'] = {openvr.k_EButton_ApplicationMenu: 1, openvr.k_EButton_Grip: 2, openvr.k_EButton_SteamVR_Touchpad: 3,
-                   openvr.k_EButton_SteamVR_Trigger: 4
-                   }
-BUTTONS['right'] = {openvr.k_EButton_ApplicationMenu: 5, openvr.k_EButton_Grip: 6, openvr.k_EButton_SteamVR_Touchpad: 7,
-                    openvr.k_EButton_SteamVR_Trigger: 8,
-                   }
-FULLTURN = 1.5
 
-
-class Wheel:
-    def __init__(self):
-        self.device = VJoyDevice(1)
-        self.x = 0  # -1 0 1
-        self.brake = 0 # 0 1
-        self.throttle = 0 # 0 1
-        self._wheel_angles = deque(maxlen=10)
-        self._wheel_angles.append(0)
-
-    def get_unwrapped(self):
-        period = 2 * pi
-        angle = np.array(self._wheel_angles)
-        diff = np.diff(np.array(angle))
-        diff_to_correct = (diff + period / 2.) % period - period / 2.
-        increment = np.cumsum(diff_to_correct - diff)
-        angle[1:] += increment
-        return angle[-1]
-
-    def update(self, left_ctr, right_ctr):
-        init = left_ctr.x, left_ctr.y
-        a = right_ctr.x, right_ctr.y
-        deltaY = a[0] - init[0]
-        deltaX = a[1] - init[1]
-        angle = (atan2(deltaY, deltaX)+pi/2)
-        self._wheel_angles.append(angle)
-
-        wheel_angle = self.get_unwrapped()
-        self._wheel_angles[-1] = wheel_angle
-        wheel_turn = wheel_angle/(2*pi)
-        axisX = int((wheel_turn/FULLTURN+0.5)*0x8000)
-        self.device.set_axis(HID_USAGE_X, axisX)
-        self.device.set_axis(HID_USAGE_RX, int(left_ctr.axis*0x8000))
-        self.device.set_axis(HID_USAGE_RY, int(right_ctr.axis*0x8000))
-
-    def set_button_press(self, button, hand):
-        try:
-            btn_id = BUTTONS[hand][button]
-            self.device.set_button(btn_id, True)
-        except KeyError:
-            pass
-
-    def set_button_unpress(self, button, hand):
-        try:
-            btn_id = BUTTONS[hand][button]
-            self.device.set_button(btn_id, False)
-        except KeyError:
-            pass
-
-
-class Controller:
-    def __init__(self, id, name='', vrsys = None):
-
-        self.id = openvr.TrackedDeviceIndex_t(id)
-
-        self.axis = 0
-        self.x, self.y, self.z = 0, 0, 0
-        self.name = name
-
-    def update(self, pose):
-        vrsys = openvr.VRSystem()
-        result, pControllerState = vrsys.getControllerState(self.id)
-
-        self.x = pose.mDeviceToAbsoluteTracking[0][3]
-        self.y = pose.mDeviceToAbsoluteTracking[1][3]
-        self.z = pose.mDeviceToAbsoluteTracking[2][3]
-
-        self.axis = pControllerState.rAxis[1].x
-        self.valid = pose.bPoseIsValid
-
-    def __repr__(self):
-        return '<{} {} Controller position x={}, y={}, z={}, axis={} valid={}>'.format(self.name,
-                                                                                       self.id,
-                                                                                       self.x,
-                                                                                       self.y,
-                                                                                       self.z,
-                                                                                       self.axis,
-                                                                                       self.valid)
 
 def do_work(vrsystem, left_controller: Controller, right_controller: Controller, wheel: Wheel, poses):
     vrsystem.getDeviceToAbsoluteTrackingPose(openvr.TrackingUniverseSeated, 0, len(poses), poses)
     left_controller.update(poses[left_controller.id.value])
     right_controller.update(poses[right_controller.id.value])
-    wheel.update(left_controller, right_controller)
     event = openvr.VREvent_t()
     while vrsystem.pollNextEvent(event):
         hand = None
         if event.trackedDeviceIndex == left_controller.id.value:
+            if event.eventType == openvr.VREvent_ButtonTouch:
+                if event.data.controller.button == openvr.k_EButton_SteamVR_Touchpad:
+                    wheel.set_trackpad_touch_left()
+                elif  event.data.controller.button == openvr.k_EButton_SteamVR_Trigger:
+                    wheel.set_trigger_touch_left()
+            elif  event.eventType == openvr.VREvent_ButtonUntouch:
+                if event.data.controller.button == openvr.k_EButton_SteamVR_Touchpad:
+                    wheel.set_trackpad_untouch_left()
+                elif  event.data.controller.button == openvr.k_EButton_SteamVR_Trigger:
+                    wheel.set_trigger_untouch_left()
+
             hand = 'left'
         if event.trackedDeviceIndex == right_controller.id.value:
+
+            if event.eventType == openvr.VREvent_ButtonTouch:
+                if event.data.controller.button == openvr.k_EButton_SteamVR_Touchpad:
+                    wheel.set_trackpad_touch_right()
+                elif  event.data.controller.button == openvr.k_EButton_SteamVR_Trigger:
+                    wheel.set_trigger_touch_right()
+            elif  event.eventType == openvr.VREvent_ButtonUntouch:
+                if event.data.controller.button == openvr.k_EButton_SteamVR_Touchpad:
+                    wheel.set_trackpad_untouch_right()
+                elif  event.data.controller.button == openvr.k_EButton_SteamVR_Trigger:
+                    wheel.set_trigger_untouch_right()
+
             hand = 'right'
         if hand:
             if event.eventType == openvr.VREvent_ButtonPress:
@@ -115,7 +51,7 @@ def do_work(vrsystem, left_controller: Controller, right_controller: Controller,
             if event.eventType == openvr.VREvent_ButtonUnpress:
                 button = event.data.controller.button
                 wheel.set_button_unpress(button, hand)
-
+    wheel.update(left_controller, right_controller)
 
 
 def get_controller_ids():
@@ -131,7 +67,7 @@ def get_controller_ids():
     return left, right
 
 
-def main():
+def main(type='wheel'):
     openvr.init(openvr.VRApplication_Background)
     vrsystem = openvr.VRSystem()
     hands_got = False
@@ -147,7 +83,12 @@ def main():
 
     left_controller = Controller(left, name='left', vrsys=vrsystem)
     right_controller = Controller(right, name='right', vrsys=vrsystem)
-    wheel = Wheel()
+    if type == 'wheel':
+        wheel = Wheel()
+    elif type == 'joystick':
+        wheel = Joystick()
+    elif type == 'pad':
+        wheel = VirtualPad()
     poses_t = openvr.TrackedDevicePose_t * openvr.k_unMaxTrackedDeviceCount
     poses = poses_t()
     while True:
