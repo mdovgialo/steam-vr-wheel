@@ -52,11 +52,9 @@ class VirtualPad:
         else:
             X, Y = self.trackpadLX, self.trackpadLY
         zone = self._get_zone(X, Y) + right * 8 + 4
-        print(zone)
         return zone
 
     def _get_zone(self, x, y):
-        print(x, y)
         if (x**2 + y**2)**0.5 <0.3:
             return 0
         if x>y:
