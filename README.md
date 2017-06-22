@@ -25,7 +25,15 @@ To run:
 =======
 open cmd, write:
 
-wheel
+vrwheel
+
+or 
+
+vrjoystick
+
+or 
+
+vrpad
 
 press ctrl+c to stop
 
