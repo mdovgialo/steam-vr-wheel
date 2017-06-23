@@ -38,6 +38,10 @@ or
 
 vrpad
 
+For configurator - write
+
+vrpadconfig
+
 press ctrl+c to stop
 
 To uninstall:
