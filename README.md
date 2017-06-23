@@ -2,6 +2,9 @@
 Wheel emulation using steamVR
 =============================
 Everything should work.
+
+Demo: https://www.youtube.com/watch?v=lb0zGBVwN4Y
+
 Requires pyopenvr, and vjoy ( http://vjoystick.sourceforge.net/site/ Public domain )
 
 Uses pyvjoy binding from https://github.com/tidzo/pyvjoy
