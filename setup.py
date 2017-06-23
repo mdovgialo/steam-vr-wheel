@@ -25,7 +25,7 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
     #install_requires=['openvr==1.0.301', 'numpy'],
-    install_requires=['openvr', 'numpy'],
+    install_requires=['openvr', 'numpy',  'wxPython==4.0.0a3' ],
 
 
     # If there are data files included in your packages that need to be
@@ -48,6 +48,7 @@ setup(
             'vrwheel=steam_vr_wheel.wheel:main',
             'vrjoystick=steam_vr_wheel.joystick:main_j',
             'vrpad=steam_vr_wheel.pad:main_p',
+            'vrpadconfig=steam_vr_wheel.configurator:run',
         ],
     },
 )
