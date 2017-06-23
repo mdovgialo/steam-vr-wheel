@@ -4,10 +4,11 @@ import openvr
 
 from steam_vr_wheel.pyvjoy.vjoydevice import VJoyDevice, HID_USAGE_SL0, HID_USAGE_SL1, HID_USAGE_X, HID_USAGE_Y, HID_USAGE_RX, HID_USAGE_RY
 from steam_vr_wheel.vrcontroller import Controller
+from . import PadConfig
 
 BUTTONS = {}
 BUTTONS['left'] = {openvr.k_EButton_ApplicationMenu: 3, openvr.k_EButton_Grip: 2, openvr.k_EButton_SteamVR_Touchpad: -1, # 4 5 6 7 8
-                   openvr.k_EButton_SteamVR_Trigger: 1
+                   openvr.k_EButton_SteamVR_Trigger: 1,
                    }
 BUTTONS['right'] = {openvr.k_EButton_ApplicationMenu: 11, openvr.k_EButton_Grip: 10, openvr.k_EButton_SteamVR_Touchpad: -2, # 12 13 14 15 16
                     openvr.k_EButton_SteamVR_Trigger: 9,
@@ -30,6 +31,7 @@ class RightTrackpadAxisDisablerMixin:
 
 class VirtualPad:
     def __init__(self):
+        self.config = PadConfig()
         device = 1
         try:
             device = int(sys.argv[1])
@@ -47,11 +49,14 @@ class VirtualPad:
         self.sliderR = 0
 
     def get_trackpad_zone(self, right=True):
-        if right:
-            X, Y = self.trackpadRX, self.trackpadRY
+        if self.config.multibutton_trackpad:
+            if right:
+                X, Y = self.trackpadRX, self.trackpadRY
+            else:
+                X, Y = self.trackpadLX, self.trackpadLY
+            zone = self._get_zone(X, Y) + right * 8 + 4
         else:
-            X, Y = self.trackpadLX, self.trackpadLY
-        zone = self._get_zone(X, Y) + right * 8 + 4
+            zone = 0 + right * 8 + 4
         return zone
 
     def _get_zone(self, x, y):
@@ -91,8 +96,13 @@ class VirtualPad:
                 pass
 
     def set_button_press(self, button, hand):
+        if button == openvr.k_EButton_SteamVR_Trigger:
+            if not self.config.trigger_press_button:
+                return
         try:
             btn_id = BUTTONS[hand][button]
+            if btn_id is None:
+                return
             if btn_id == -1:
                 self.pressed_left_trackpad()
             elif btn_id == -2:
@@ -115,10 +125,12 @@ class VirtualPad:
             pass
 
     def set_trigger_touch_left(self):
-        self.device.set_button(31, True)
+        if self.config.trigger_pre_press_button:
+            self.device.set_button(31, True)
 
     def set_trigger_touch_right(self):
-        self.device.set_button(32, True)
+        if self.config.trigger_pre_press_button:
+            self.device.set_button(32, True)
 
     def set_trigger_untouch_left(self):
         self.device.set_button(31, False)
