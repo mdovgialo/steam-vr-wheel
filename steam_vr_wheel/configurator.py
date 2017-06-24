@@ -14,18 +14,23 @@ class ConfiguratorApp:
         self.trigger_pre_btn_box = wx.CheckBox(self.pnl, label='Triggers pre press button')
         self.trigger_btn_box = wx.CheckBox(self.pnl, label='Triggers press button')
         self.multibutton_trackpad_box = wx.CheckBox(self.pnl, label='5 Button touchpad')
+        self.multibutton_trackpad_center_haptic_box = wx.CheckBox(self.pnl,
+                                                                  label='Haptic feedback for trackpad button zones')
 
         self.trigger_pre_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.trigger_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.multibutton_trackpad_box.Bind(wx.EVT_CHECKBOX, self.config_change)
+        self.multibutton_trackpad_center_haptic_box.Bind(wx.EVT_CHECKBOX, self.config_change)
 
         self._config_map = dict(trigger_pre_press_button=self.trigger_pre_btn_box,
                                 trigger_press_button=self.trigger_btn_box,
-                                multibutton_trackpad=self.multibutton_trackpad_box)
+                                multibutton_trackpad=self.multibutton_trackpad_box,
+                                multibutton_trackpad_center_haptic=self.multibutton_trackpad_center_haptic_box)
 
         self.vbox.Add(self.trigger_pre_btn_box)
         self.vbox.Add(self.trigger_btn_box)
         self.vbox.Add(self.multibutton_trackpad_box)
+        self.vbox.Add(self.multibutton_trackpad_center_haptic_box)
 
         self.pnl.SetSizer(self.vbox)
         self.read_config()
