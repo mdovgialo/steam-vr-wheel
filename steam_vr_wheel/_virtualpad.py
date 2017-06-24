@@ -169,8 +169,8 @@ class VirtualPad:
             openvr.VRSystem().triggerHapticPulse(left_ctr.id, 0, haptic_pulse_strength)
 
         if self.trackpadLtouch and self.trackpad_left_enabled:
-            self.device.set_axis(HID_USAGE_X, int((left_ctr.trackpadX+1)/2 * 0x8000))
-            self.device.set_axis(HID_USAGE_Y, int(((-left_ctr.trackpadY+1)/2) * 0x8000))
+            self.device.set_axis(HID_USAGE_RX, int((left_ctr.trackpadX+1)/2 * 0x8000))
+            self.device.set_axis(HID_USAGE_RY, int(((-left_ctr.trackpadY+1)/2) * 0x8000))
         self.trackpadRX = right_ctr.trackpadX
         self.trackpadRY = right_ctr.trackpadY
 
@@ -181,5 +181,5 @@ class VirtualPad:
             openvr.VRSystem().triggerHapticPulse(right_ctr.id, 0, haptic_pulse_strength)
 
         if self.trackpadRtouch  and self.trackpad_right_enabled:
-            self.device.set_axis(HID_USAGE_RX, int((right_ctr.trackpadX + 1) / 2 * 0x8000))
-            self.device.set_axis(HID_USAGE_RY, int(((-right_ctr.trackpadY + 1) / 2) * 0x8000))
+            self.device.set_axis(HID_USAGE_X, int((right_ctr.trackpadX + 1) / 2 * 0x8000))
+            self.device.set_axis(HID_USAGE_Y, int(((-right_ctr.trackpadY + 1) / 2) * 0x8000))

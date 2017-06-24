@@ -1,10 +1,10 @@
 import sys
 
 from steam_vr_wheel.pyvjoy.vjoydevice import HID_USAGE_X, HID_USAGE_Y, HID_USAGE_Z
-from steam_vr_wheel._virtualpad import VirtualPad, LeftTrackpadAxisDisablerMixin
+from steam_vr_wheel._virtualpad import VirtualPad, RightTrackpadAxisDisablerMixin
 
 
-class Joystick(LeftTrackpadAxisDisablerMixin, VirtualPad):
+class Joystick(RightTrackpadAxisDisablerMixin, VirtualPad):
     def __init__(self):
         super().__init__()
         self.x = 0

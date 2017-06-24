@@ -3,15 +3,15 @@ from math import pi, atan2
 
 import numpy as np
 
-from steam_vr_wheel._virtualpad import VirtualPad, LeftTrackpadAxisDisablerMixin
-from steam_vr_wheel.pyvjoy import HID_USAGE_X, HID_USAGE_Z, HID_USAGE_Y
+from steam_vr_wheel._virtualpad import VirtualPad
+from steam_vr_wheel.pyvjoy import HID_USAGE_Z
 
 
 
 FULLTURN = 4
 
 
-class Wheel(LeftTrackpadAxisDisablerMixin, VirtualPad):
+class Wheel(VirtualPad):
     def __init__(self):
         super().__init__()
         self.x = 0  # -1 0 1
@@ -40,4 +40,4 @@ class Wheel(LeftTrackpadAxisDisablerMixin, VirtualPad):
         self._wheel_angles[-1] = wheel_angle
         wheel_turn = wheel_angle/(2*pi)
         axisX = int((wheel_turn/FULLTURN+0.5)*0x8000)
-        self.device.set_axis(HID_USAGE_X, axisX)
+        self.device.set_axis(HID_USAGE_Z, axisX)
