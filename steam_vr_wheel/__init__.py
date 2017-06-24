@@ -11,7 +11,7 @@ else:
     CONFIG_PATH = os.path.expanduser(os.path.join('~', '.steam-vr-wheel', 'config.json'))
 
 DEFAULT_CONFIG = dict(trigger_pre_press_button=True, trigger_press_button=True, multibutton_trackpad=True,
-                      multibutton_trackpad_center_haptic=True)
+                      multibutton_trackpad_center_haptic=True, touchpad_always_updates=False)
 
 
 class ConfigException(Exception):
@@ -119,4 +119,15 @@ class PadConfig:
     def multibutton_trackpad_center_haptic(self, x: bool):
         with self.data_lock:
             self._data['multibutton_trackpad_center_haptic'] = x
+        self._write()
+
+    @property
+    def touchpad_always_updates(self):
+        with self.data_lock:
+            return self._data['touchpad_always_updates']
+
+    @touchpad_always_updates.setter
+    def touchpad_always_updates(self, x: bool):
+        with self.data_lock:
+            self._data['touchpad_always_updates'] = x
         self._write()
