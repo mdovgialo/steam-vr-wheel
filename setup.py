@@ -47,6 +47,7 @@ setup(
         'console_scripts': [
             'vrwheel=steam_vr_wheel.wheel:main',
             'vrjoystick=steam_vr_wheel.joystick:main_j',
+            'vrdoublejoystick=steam_vr_wheel.doublejoystick:main_dj',
             'vrpad=steam_vr_wheel.pad:main_p',
             'vrpadconfig=steam_vr_wheel.configurator:run',
         ],
