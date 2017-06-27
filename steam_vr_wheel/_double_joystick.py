@@ -17,6 +17,7 @@ class DoubleJoystick(RightTrackpadAxisDisablerMixin, LeftTrackpadAxisDisablerMix
             axisY = 90 - right_ctr.roll
         else:
             axisY = -(90 + right_ctr.roll)
+        axisY = -(axisY + 90)/180 + 1
         axisZ = (-right_ctr.pitch+90)/180
 
 
