@@ -2,6 +2,7 @@ import time
 
 import openvr
 
+from steam_vr_wheel._double_joystick import DoubleJoystick
 from steam_vr_wheel._joystick import Joystick
 from steam_vr_wheel._virtualpad import VirtualPad
 from steam_vr_wheel._wheel import Wheel
@@ -87,6 +88,8 @@ def main(type='wheel'):
         wheel = Wheel()
     elif type == 'joystick':
         wheel = Joystick()
+    elif type == 'doublejoystick':
+        wheel = DoubleJoystick()
     elif type == 'pad':
         wheel = VirtualPad()
     poses_t = openvr.TrackedDevicePose_t * openvr.k_unMaxTrackedDeviceCount
