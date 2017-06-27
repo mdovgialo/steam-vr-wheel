@@ -17,24 +17,28 @@ class ConfiguratorApp:
         self.multibutton_trackpad_center_haptic_box = wx.CheckBox(self.pnl,
                                                                   label='Haptic feedback for trackpad button zones')
         self.touchpad_always_updates_box = wx.CheckBox(self.pnl, label='Touchpad mapping to axis while untouched (axis move to center when released)')
+        self.vertical_wheel_box = wx.CheckBox(self.pnl, label='Steering wheel is vertical')
 
         self.trigger_pre_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.trigger_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.multibutton_trackpad_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.multibutton_trackpad_center_haptic_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.touchpad_always_updates_box.Bind(wx.EVT_CHECKBOX, self.config_change)
+        self.vertical_wheel_box.Bind(wx.EVT_CHECKBOX, self.config_change)
 
         self._config_map = dict(trigger_pre_press_button=self.trigger_pre_btn_box,
                                 trigger_press_button=self.trigger_btn_box,
                                 multibutton_trackpad=self.multibutton_trackpad_box,
                                 multibutton_trackpad_center_haptic=self.multibutton_trackpad_center_haptic_box,
-                                touchpad_always_updates=self.touchpad_always_updates_box,)
+                                touchpad_always_updates=self.touchpad_always_updates_box,
+                                vertical_wheel=self.vertical_wheel_box,)
 
         self.vbox.Add(self.trigger_pre_btn_box)
         self.vbox.Add(self.trigger_btn_box)
         self.vbox.Add(self.multibutton_trackpad_box)
         self.vbox.Add(self.multibutton_trackpad_center_haptic_box)
         self.vbox.Add(self.touchpad_always_updates_box)
+        self.vbox.Add(self.vertical_wheel_box)
 
         self.pnl.SetSizer(self.vbox)
         self.read_config()

@@ -27,14 +27,28 @@ class Wheel(VirtualPad):
         angle[1:] += increment
         return angle[-1]
 
-    def update(self, left_ctr, right_ctr):
-        super().update(left_ctr, right_ctr)
+    def _vertical_wheel_update(self, left_ctr, right_ctr):
         init = left_ctr.x, left_ctr.y
         a = right_ctr.x, right_ctr.y
         deltaY = a[0] - init[0]
         deltaX = a[1] - init[1]
-        angle = (atan2(deltaY, deltaX)+pi/2)
+        angle = (atan2(deltaY, deltaX) + pi / 2)
         self._wheel_angles.append(angle)
+
+    def _horizontal_wheel_update(self, left_ctr, right_ctr):
+        init = left_ctr.x, left_ctr.z
+        a = right_ctr.x, right_ctr.z
+        deltaY = a[0] - init[0]
+        deltaZ = a[1] - init[1]
+        angle = (atan2(deltaY, deltaZ) + pi / 2)
+        self._wheel_angles.append(-angle)
+
+    def update(self, left_ctr, right_ctr):
+        super().update(left_ctr, right_ctr)
+        if self.config.vertical_wheel:
+            self._vertical_wheel_update(left_ctr, right_ctr)
+        else:
+            self._horizontal_wheel_update(left_ctr, right_ctr)
 
         wheel_angle = self.get_unwrapped()
         self._wheel_angles[-1] = wheel_angle
