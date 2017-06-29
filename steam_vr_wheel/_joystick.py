@@ -34,6 +34,10 @@ class Throttle():
                 self.throttle_relative_zeroed = True
             else:
                 self.throttle_z = self.invertion * value - self.throttle_real_world_z + self.throttle_at_real_world_z
+                if self.throttle_z<0:
+                    self.throttle_z = 0
+                elif self.throttle_z>self.size:
+                    self.throttle_z = self.size
 
         else:
             self.throttle_relative_zeroed = False
