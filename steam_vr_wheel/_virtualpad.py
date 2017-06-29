@@ -1,10 +1,13 @@
 import sys
 
 import openvr
+import time
 
+from steam_vr_wheel.configurator import ConfiguratorApp
 from steam_vr_wheel.pyvjoy.vjoydevice import VJoyDevice, HID_USAGE_SL0, HID_USAGE_SL1, HID_USAGE_X, HID_USAGE_Y, HID_USAGE_RX, HID_USAGE_RY
 from steam_vr_wheel.vrcontroller import Controller
-from . import PadConfig
+from . import PadConfig, ConfigException
+import multiprocessing
 
 BUTTONS = {}
 BUTTONS['left'] = {openvr.k_EButton_ApplicationMenu: 3, openvr.k_EButton_Grip: 2, openvr.k_EButton_SteamVR_Touchpad: -1, # 4 5 6 7 8
@@ -17,15 +20,20 @@ BUTTONS['right'] = {openvr.k_EButton_ApplicationMenu: 11, openvr.k_EButton_Grip:
 class LeftTrackpadAxisDisablerMixin:
     trackpad_left_enabled = False
 
+
 class RightTrackpadAxisDisablerMixin:
     trackpad_right_enabled = False
+
+
+def run_configurator():
+    ConfiguratorApp().run()
 
 
 class VirtualPad:
     trackpad_left_enabled = True
     trackpad_right_enabled = True
     def __init__(self):
-        self.config = PadConfig()
+        self.init_config()
         device = 1
         try:
             device = int(sys.argv[1])
@@ -44,6 +52,21 @@ class VirtualPad:
 
         self.previous_left_zone = 0
         self.previous_right_zone = 0
+
+    def init_config(self):
+        config_loaded = False
+        app_ran = False
+        while not config_loaded:
+            try:
+                self.config = PadConfig()
+                config_loaded = True
+            except ConfigException as e:
+                print(e)
+                if not app_ran:
+                    p = multiprocessing.Process(target=run_configurator)
+                    p.start()
+                    app_ran = True
+                time.sleep(1)
 
     def get_trackpad_zone(self, right=True):
         if self.config.multibutton_trackpad:

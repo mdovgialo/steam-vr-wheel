@@ -11,7 +11,7 @@ else:
     CONFIG_PATH = os.path.expanduser(os.path.join('~', '.steam-vr-wheel', 'config.json'))
 
 DEFAULT_CONFIG = dict(trigger_pre_press_button=True, trigger_press_button=True, multibutton_trackpad=True,
-                      multibutton_trackpad_center_haptic=True, touchpad_always_updates=False, vertical_wheel=True)
+                      multibutton_trackpad_center_haptic=True, touchpad_always_updates=True, vertical_wheel=True)
 
 
 class ConfigException(Exception):
@@ -35,8 +35,8 @@ class PadConfig:
                     except json.decoder.JSONDecodeError as e:
                         raise ConfigException(str(e))
                     self.validate_config()
-            except FileNotFoundError:
-                self._load_default()
+            except FileNotFoundError as e:
+                raise ConfigException(str(e))
         self.mtime = os.path.getmtime(CONFIG_PATH)
         self.check_thr = threading.Thread(target=self._check_config)
         self.check_thr.daemon = True
