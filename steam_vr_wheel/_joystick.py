@@ -50,6 +50,7 @@ class Joystick(RightTrackpadAxisDisablerMixin, LeftTrackpadAxisDisablerMixin, Vi
         self.throttle_z = Throttle(size=0.3, inverted=True)
         self.throttle_y = Throttle(size=0.2)
         self.throttle_x = Throttle(size=90)
+        self.joystick_grabbed = False
 
     def set_button_press(self, button, hand):
         super().set_button_press(button, hand)
@@ -57,6 +58,11 @@ class Joystick(RightTrackpadAxisDisablerMixin, LeftTrackpadAxisDisablerMixin, Vi
             self.throttle_z.grabbed()
             self.throttle_x.grabbed()
             self.throttle_y.grabbed()
+        if button == openvr.k_EButton_Grip and hand == 'right':
+            if self.config.joystick_grabbing_switch:
+                self.joystick_grabbed = not self.joystick_grabbed
+            else:
+                self.joystick_grabbed = True
 
     def set_button_unpress(self, button, hand):
         super().set_button_unpress(button, hand)
@@ -64,6 +70,8 @@ class Joystick(RightTrackpadAxisDisablerMixin, LeftTrackpadAxisDisablerMixin, Vi
             self.throttle_z.ungrabbed()
             self.throttle_x.ungrabbed()
             self.throttle_y.ungrabbed()
+        if button == openvr.k_EButton_Grip and hand == 'right' and (not self.config.joystick_grabbing_switch):
+            self.joystick_grabbed = False
 
 
     def update(self, left_ctr, right_ctr):
@@ -75,9 +83,11 @@ class Joystick(RightTrackpadAxisDisablerMixin, LeftTrackpadAxisDisablerMixin, Vi
             axisY = -(90 + right_ctr.roll)
         axisY = -(axisY + 90)/180 + 1
         axisZ = (-right_ctr.pitch+90)/180
-        self.device.set_axis(HID_USAGE_X, int(axisX * 0x8000))
-        self.device.set_axis(HID_USAGE_Y, int(axisY * 0x8000))
-        self.device.set_axis(HID_USAGE_Z, int(axisZ * 0x8000))
+
+        if (not self.config.joystick_updates_only_when_grabbed) or self.joystick_grabbed:
+            self.device.set_axis(HID_USAGE_X, int(axisX * 0x8000))
+            self.device.set_axis(HID_USAGE_Y, int(axisY * 0x8000))
+            self.device.set_axis(HID_USAGE_Z, int(axisZ * 0x8000))
 
         self.throttle_z.update(left_ctr.z)
         self.throttle_y.update(left_ctr.y)

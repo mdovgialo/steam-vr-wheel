@@ -11,7 +11,8 @@ else:
     CONFIG_PATH = os.path.expanduser(os.path.join('~', '.steam-vr-wheel', 'config.json'))
 
 DEFAULT_CONFIG = dict(trigger_pre_press_button=True, trigger_press_button=True, multibutton_trackpad=True,
-                      multibutton_trackpad_center_haptic=True, touchpad_always_updates=True, vertical_wheel=True)
+                      multibutton_trackpad_center_haptic=True, touchpad_always_updates=True, vertical_wheel=True,
+                      joystick_updates_only_when_grabbed=False, joystick_grabbing_switch=False)
 
 
 class ConfigException(Exception):
@@ -141,4 +142,26 @@ class PadConfig:
     def vertical_wheel(self, x: bool):
         with self.data_lock:
             self._data['vertical_wheel'] = x
+        self._write()
+
+    @property
+    def joystick_updates_only_when_grabbed(self):
+        with self.data_lock:
+            return self._data['joystick_updates_only_when_grabbed']
+
+    @joystick_updates_only_when_grabbed.setter
+    def joystick_updates_only_when_grabbed(self, x: bool):
+        with self.data_lock:
+            self._data['joystick_updates_only_when_grabbed'] = x
+        self._write()
+
+    @property
+    def joystick_grabbing_switch(self):
+        with self.data_lock:
+            return self._data['joystick_grabbing_switch']
+
+    @joystick_grabbing_switch.setter
+    def joystick_grabbing_switch(self, x: bool):
+        with self.data_lock:
+            self._data['joystick_grabbing_switch'] = x
         self._write()
