@@ -18,6 +18,8 @@ class ConfiguratorApp:
                                                                   label='Haptic feedback for trackpad button zones')
         self.touchpad_always_updates_box = wx.CheckBox(self.pnl, label='Touchpad mapping to axis while untouched (axis move to center when released)')
         self.vertical_wheel_box = wx.CheckBox(self.pnl, label='Steering wheel is vertical')
+        self.joystick_updates_only_when_grabbed_box = wx.CheckBox(self.pnl, label='Joystick moves only when grabbed (by right grip)')
+        self.joystick_grabbing_switch_box = wx.CheckBox(self.pnl, label='Joystick grab is a switch')
 
         self.trigger_pre_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.trigger_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
@@ -25,13 +27,18 @@ class ConfiguratorApp:
         self.multibutton_trackpad_center_haptic_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.touchpad_always_updates_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.vertical_wheel_box.Bind(wx.EVT_CHECKBOX, self.config_change)
+        self.joystick_updates_only_when_grabbed_box.Bind(wx.EVT_CHECKBOX, self.config_change)
+        self.joystick_grabbing_switch_box.Bind(wx.EVT_CHECKBOX, self.config_change)
 
         self._config_map = dict(trigger_pre_press_button=self.trigger_pre_btn_box,
                                 trigger_press_button=self.trigger_btn_box,
                                 multibutton_trackpad=self.multibutton_trackpad_box,
                                 multibutton_trackpad_center_haptic=self.multibutton_trackpad_center_haptic_box,
                                 touchpad_always_updates=self.touchpad_always_updates_box,
-                                vertical_wheel=self.vertical_wheel_box,)
+                                vertical_wheel=self.vertical_wheel_box,
+                                joystick_updates_only_when_grabbed=self.joystick_updates_only_when_grabbed_box,
+                                joystick_grabbing_switch=self.joystick_grabbing_switch_box,
+                                )
 
         self.vbox.Add(self.trigger_pre_btn_box)
         self.vbox.Add(self.trigger_btn_box)
@@ -39,6 +46,8 @@ class ConfiguratorApp:
         self.vbox.Add(self.multibutton_trackpad_center_haptic_box)
         self.vbox.Add(self.touchpad_always_updates_box)
         self.vbox.Add(self.vertical_wheel_box)
+        self.vbox.Add(self.joystick_updates_only_when_grabbed_box)
+        self.vbox.Add(self.joystick_grabbing_switch_box)
 
         self.pnl.SetSizer(self.vbox)
         self.read_config()
