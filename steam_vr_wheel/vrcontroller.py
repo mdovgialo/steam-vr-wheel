@@ -1,7 +1,12 @@
 import math
 
 import openvr
+import sys
 
+if 'DEBUG' in sys.argv:
+    DEBUG = True
+else:
+    DEBUG = False
 
 class Controller:
     def __init__(self, id, name='', vrsys = None):
@@ -34,6 +39,10 @@ class Controller:
         self.trackpadX = pControllerState.rAxis[0].x
         self.trackpadY = pControllerState.rAxis[0].y
         self.valid = pose.bPoseIsValid
+        if DEBUG:
+            print(self.name, "controller axis:")
+            for n, i in enumerate(pControllerState.rAxis):
+                print("AXIS", n, "x:", i.x, "y:", i.y)
 
     def __repr__(self):
         return '<{} {} Controller position x={}, y={}, z={}, axis={} valid={}>'.format(self.name,

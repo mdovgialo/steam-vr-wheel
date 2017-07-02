@@ -1,6 +1,7 @@
 import time
 
 import openvr
+import sys
 
 from steam_vr_wheel._double_joystick import DoubleJoystick
 from steam_vr_wheel._joystick import Joystick
@@ -10,6 +11,11 @@ from steam_vr_wheel.vrcontroller import Controller
 
 FREQUENCY = 60
 
+if 'DEBUG' in sys.argv:
+    DEBUG = True
+    FREQUENCY = 1
+else:
+    DEBUG = False
 
 def do_work(vrsystem, left_controller: Controller, right_controller: Controller, wheel: Wheel, poses):
     vrsystem.getDeviceToAbsoluteTrackingPose(openvr.TrackingUniverseSeated, 0, len(poses), poses)
@@ -19,12 +25,17 @@ def do_work(vrsystem, left_controller: Controller, right_controller: Controller,
     while vrsystem.pollNextEvent(event):
         hand = None
         if event.trackedDeviceIndex == left_controller.id.value:
+
             if event.eventType == openvr.VREvent_ButtonTouch:
+                if DEBUG:
+                    print("LEFT HAND EVENT: BUTTON TOUCH, BUTTON ID", event.data.controller.button)
                 if event.data.controller.button == openvr.k_EButton_SteamVR_Touchpad:
                     wheel.set_trackpad_touch_left()
                 elif  event.data.controller.button == openvr.k_EButton_SteamVR_Trigger:
                     wheel.set_trigger_touch_left()
             elif  event.eventType == openvr.VREvent_ButtonUntouch:
+                if DEBUG:
+                    print("LEFT HAND EVENT: BUTTON UNTOUCH, BUTTON ID", event.data.controller.button)
                 if event.data.controller.button == openvr.k_EButton_SteamVR_Touchpad:
                     wheel.set_trackpad_untouch_left()
                 elif  event.data.controller.button == openvr.k_EButton_SteamVR_Trigger:
@@ -34,11 +45,16 @@ def do_work(vrsystem, left_controller: Controller, right_controller: Controller,
         if event.trackedDeviceIndex == right_controller.id.value:
 
             if event.eventType == openvr.VREvent_ButtonTouch:
+                if DEBUG:
+                    print("RIGHT HAND EVENT: BUTTON TOUCH, BUTTON ID", event.data.controller.button)
                 if event.data.controller.button == openvr.k_EButton_SteamVR_Touchpad:
                     wheel.set_trackpad_touch_right()
                 elif  event.data.controller.button == openvr.k_EButton_SteamVR_Trigger:
                     wheel.set_trigger_touch_right()
             elif  event.eventType == openvr.VREvent_ButtonUntouch:
+                if DEBUG:
+                    print("RIGHT HAND EVENT: BUTTON UNTOUCH, BUTTON ID", event.data.controller.button)
+
                 if event.data.controller.button == openvr.k_EButton_SteamVR_Touchpad:
                     wheel.set_trackpad_untouch_right()
                 elif  event.data.controller.button == openvr.k_EButton_SteamVR_Trigger:
@@ -47,9 +63,14 @@ def do_work(vrsystem, left_controller: Controller, right_controller: Controller,
             hand = 'right'
         if hand:
             if event.eventType == openvr.VREvent_ButtonPress:
+                if DEBUG:
+                    print(hand, "HAND EVENT: BUTTON PRESS, BUTTON ID", event.data.controller.button)
+
                 button = event.data.controller.button
                 wheel.set_button_press(button, hand)
             if event.eventType == openvr.VREvent_ButtonUnpress:
+                if DEBUG:
+                    print(hand, "HAND EVENT: BUTTON UNPRESS, BUTTON ID", event.data.controller.button)
                 button = event.data.controller.button
                 wheel.set_button_unpress(button, hand)
     wheel.update(left_controller, right_controller)
