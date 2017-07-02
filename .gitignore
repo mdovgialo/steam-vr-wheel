@@ -4,4 +4,4 @@
 *.spec
 build
 dist
-.idea/*
+.idea/*.idea/
