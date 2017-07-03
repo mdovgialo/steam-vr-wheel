@@ -11,10 +11,10 @@ import multiprocessing
 
 BUTTONS = {}
 BUTTONS['left'] = {openvr.k_EButton_ApplicationMenu: 3, openvr.k_EButton_Grip: 2, openvr.k_EButton_SteamVR_Touchpad: -1, # 4 5 6 7 8
-                   openvr.k_EButton_SteamVR_Trigger: 1,
+                   openvr.k_EButton_SteamVR_Trigger: 1, openvr.k_EButton_A: 17,
                    }
 BUTTONS['right'] = {openvr.k_EButton_ApplicationMenu: 11, openvr.k_EButton_Grip: 10, openvr.k_EButton_SteamVR_Touchpad: -2, # 12 13 14 15 16
-                    openvr.k_EButton_SteamVR_Trigger: 9,
+                    openvr.k_EButton_SteamVR_Trigger: 9, openvr.k_EButton_A: 18
                     }
 
 class LeftTrackpadAxisDisablerMixin:
