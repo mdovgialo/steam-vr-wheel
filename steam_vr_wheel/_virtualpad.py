@@ -206,3 +206,6 @@ class VirtualPad:
         if (self.trackpadRtouch or self.config.touchpad_always_updates) and self.trackpad_right_enabled:
             self.device.set_axis(HID_USAGE_X, int((right_ctr.trackpadX + 1) / 2 * 0x8000))
             self.device.set_axis(HID_USAGE_Y, int(((-right_ctr.trackpadY + 1) / 2) * 0x8000))
+
+    def edit_mode(self, left_ctr, right_ctr):
+        pass

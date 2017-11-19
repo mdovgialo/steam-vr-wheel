@@ -1,3 +1,6 @@
+import os
+import random
+import threading
 import time
 
 import openvr
@@ -8,6 +11,7 @@ from steam_vr_wheel._joystick import Joystick
 from steam_vr_wheel._virtualpad import VirtualPad
 from steam_vr_wheel._wheel import Wheel
 from steam_vr_wheel.vrcontroller import Controller
+from steam_vr_wheel.configurator import run
 
 FREQUENCY = 60
 
@@ -73,7 +77,10 @@ def do_work(vrsystem, left_controller: Controller, right_controller: Controller,
                     print(hand, "HAND EVENT: BUTTON UNPRESS, BUTTON ID", event.data.controller.button)
                 button = event.data.controller.button
                 wheel.set_button_unpress(button, hand)
-    wheel.update(left_controller, right_controller)
+    if wheel.config.edit_mode:
+        wheel.edit_mode(left_controller, right_controller)
+    else:
+        wheel.update(left_controller, right_controller)
 
 
 def get_controller_ids():
@@ -90,14 +97,19 @@ def get_controller_ids():
 
 
 def main(type='wheel'):
-    openvr.init(openvr.VRApplication_Background)
+    openvr.init(openvr.VRApplication_Overlay)
     vrsystem = openvr.VRSystem()
     hands_got = False
+
+
     while not hands_got:
         try:
             print('Searching for left and right hand controllers')
             left, right = get_controller_ids()
             hands_got = True
+            for i in range(4):
+                openvr.VRSystem().triggerHapticPulse(right, 0, 3000)
+                time.sleep(0.2)
             print('left and right hands found')
         except NameError:
             pass
@@ -123,6 +135,9 @@ def main(type='wheel'):
         if left>0:
             time.sleep(left)
 
-
 if __name__ == '__main__':
+
+
+
+
     main()
