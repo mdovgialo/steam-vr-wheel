@@ -89,6 +89,91 @@ def matMul33(a, b, result=None):
     return result
 
 
+class HandsImage:
+    def __init__(self, left_ctr, right_ctr):
+        self._handl_closed = False
+        self._handr_closed = False
+        self.left_ctr = left_ctr
+        self.right_ctr = right_ctr
+        hand_size = 0.15
+
+        self.vrsys = openvr.VRSystem()
+        self.vroverlay = openvr.IVROverlay()
+
+        result, self.l_ovr = self.vroverlay.createOverlay('left_hand'.encode(), 'left_hand'.encode())
+        result, self.r_ovr = self.vroverlay.createOverlay('right_hand'.encode(), 'right_hand'.encode())
+
+        check_result(self.vroverlay.setOverlayColor(self.l_ovr, 1, 1, 1))
+        check_result(self.vroverlay.setOverlayColor(self.r_ovr, 1, 1, 1))
+        check_result(self.vroverlay.setOverlayAlpha(self.l_ovr, 1))
+        check_result(self.vroverlay.setOverlayAlpha(self.r_ovr, 1))
+        check_result(self.vroverlay.setOverlayWidthInMeters(self.l_ovr, hand_size))
+        check_result(self.vroverlay.setOverlayWidthInMeters(self.r_ovr, hand_size))
+
+        this_dir = os.path.abspath(os.path.dirname(__file__))
+
+        self.l_open_png = os.path.join(this_dir, 'media', 'hand_open_l.png')
+        self.r_open_png = os.path.join(this_dir, 'media', 'hand_open_r.png')
+        self.l_close_png = os.path.join(this_dir, 'media', 'hand_closed_l.png')
+        self.r_close_png = os.path.join(this_dir, 'media', 'hand_closed_r.png')
+
+        check_result(self.vroverlay.setOverlayFromFile(self.l_ovr, self.l_open_png.encode()))
+        check_result(self.vroverlay.setOverlayFromFile(self.r_ovr, self.r_open_png.encode()))
+
+
+
+        result, transform = self.vroverlay.setOverlayTransformTrackedDeviceRelative(self.l_ovr, self.left_ctr.id)
+        result, transform = self.vroverlay.setOverlayTransformTrackedDeviceRelative(self.r_ovr, self.right_ctr.id)
+
+        transform[0][0] = 1.0
+        transform[0][1] = 0.0
+        transform[0][2] = 0.0
+        transform[0][3] = 0
+
+        transform[1][0] = 0.0
+        transform[1][1] = 1.0
+        transform[1][2] = 0.0
+        transform[1][3] = 0
+
+        transform[2][0] = 0.0
+        transform[2][1] = 0.0
+        transform[2][2] = 1.0
+        transform[2][3] = 0
+
+        self.transform = transform
+
+        rotate = initRotationMatrix(0, -pi / 2)
+        self.transform = matMul33(rotate, self.transform)
+
+        fn = self.vroverlay.function_table.setOverlayTransformTrackedDeviceRelative
+        result = fn(self.l_ovr, self.left_ctr.id, openvr.byref(self.transform))
+        result = fn(self.r_ovr, self.right_ctr.id, openvr.byref(self.transform))
+
+        check_result(result)
+        check_result(self.vroverlay.showOverlay(self.l_ovr))
+        check_result(self.vroverlay.showOverlay(self.r_ovr))
+
+    def left_grab(self):
+        if not self._handl_closed:
+            self.vroverlay.setOverlayFromFile(self.l_ovr, self.l_close_png.encode())
+            self._handl_closed = True
+
+    def left_ungrab(self):
+        if self._handl_closed:
+            self.vroverlay.setOverlayFromFile(self.l_ovr, self.l_open_png.encode())
+            self._handl_closed = False
+
+    def right_grab(self):
+        if not self._handr_closed:
+            self.vroverlay.setOverlayFromFile(self.r_ovr, self.r_close_png.encode())
+            self._handr_closed = True
+
+    def right_ungrab(self):
+        if self._handr_closed:
+            self.vroverlay.setOverlayFromFile(self.r_ovr, self.r_open_png.encode())
+            self._handr_closed = False
+
+
 class SteeringWheelImage:
     def __init__(self, x=0, y=-0.4, z=-0.35, size=0.55):
         self.vrsys = openvr.VRSystem()
@@ -143,8 +228,6 @@ class SteeringWheelImage:
         fn(self.wheel, openvr.TrackingUniverseSeated, openvr.byref(self.transform))
         check_result(self.vroverlay.setOverlayWidthInMeters(self.wheel, size))
 
-
-
     def rotate(self, angles, axis=[2,]):
         try:
             self.rotation_matrix
@@ -180,6 +263,8 @@ class GrabControllerPoint(Point):
 class Wheel(VirtualPad):
     def __init__(self, inertia=0.95, center_speed=pi/180):
         super().__init__()
+        self.vrsys = openvr.VRSystem()
+        self.hands_overlay = None
         x, y, z = self.config.wheel_center
         size = self.config.wheel_size
         self._inertia = inertia
@@ -202,8 +287,8 @@ class Wheel(VirtualPad):
 
     def point_in_holding_bounds(self, point):
         width = 0.10
-        a = self.size/2*3/4 + width
-        b = self.size/2/2 - width
+        a = self.size/2 + width
+        b = self.size/2 - width
         if self.config.vertical_wheel:
             x = point.x - self.center.x
             y = point.y - self.center.y
@@ -254,14 +339,14 @@ class Wheel(VirtualPad):
     def ready_to_unsnap(self, l, r):
         d = (l.x - r.x)**2 + (l.y - r.y)**2 + (l.z - r.z)**2
 
-        if d*2 > self.size**2:
+        if d > self.size**2:
             return True
 
         dc = ((self.center.x - (l.x+r.x)/2)**2
               + (self.center.y - (l.y+r.y)/2)**2
               + (self.center.z - (l.z+r.z)/2)**2
               )
-        if dc*2 > self.size**2:
+        if dc > self.size**2:
             return True
 
         return False
@@ -320,7 +405,7 @@ class Wheel(VirtualPad):
         if self._grab_started_point:
             self._turn_speed = self._wheel_angles[-1] - self._wheel_angles[-2]
         else:
-            self._wheel_angles[-1] = self._wheel_angles[-1] + self._turn_speed
+            self._wheel_angles.append(self._wheel_angles[-1] + self._turn_speed)
             self._turn_speed *= self._inertia
 
     def center_force(self):
@@ -353,7 +438,30 @@ class Wheel(VirtualPad):
                                                     .id, 0, 3000)
 
 
+    def render_hands(self):
+        if self._snapped:
+            self.hands_overlay.left_grab()
+            self.hands_overlay.right_grab()
+            return
+        if self._grab_started_point is None:
+            self.hands_overlay.left_ungrab()
+            self.hands_overlay.right_ungrab()
+            return
+        grab_hand_role = self.vrsys.getControllerRoleForTrackedDeviceIndex(self._grab_started_point.id)
+        if  grab_hand_role == openvr.TrackedControllerRole_RightHand:
+            self.hands_overlay.right_grab()
+            self.hands_overlay.left_ungrab()
+            return
+        if grab_hand_role == openvr.TrackedControllerRole_LeftHand:
+            self.hands_overlay.left_grab()
+            self.hands_overlay.right_ungrab()
+            return
+
+
+
     def update(self, left_ctr, right_ctr):
+        if self.hands_overlay is None:
+            self.hands_overlay = HandsImage(left_ctr, right_ctr)
         super().update(left_ctr, right_ctr)
 
         angle = self._wheel_update(left_ctr, right_ctr)
@@ -370,6 +478,7 @@ class Wheel(VirtualPad):
 
         self.send_to_vjoy()
         self.render()
+        self.render_hands()
 
     def move_wheel(self, right_ctr, left_ctr):
         self.center = Point(right_ctr.x, right_ctr.y, right_ctr.z)
