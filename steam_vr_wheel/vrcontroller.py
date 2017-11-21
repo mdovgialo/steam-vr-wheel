@@ -29,12 +29,20 @@ class Controller:
         self.z = pose.mDeviceToAbsoluteTracking[2][3]
 
         pose_mat = pose.mDeviceToAbsoluteTracking
-        self.yaw = 180 / math.pi * math.atan(pose_mat[1][0] / pose_mat[0][0])
-        self.pitch = 180 / math.pi * math.atan(
-            -1 * pose_mat[2][0] / math.sqrt(pow(pose_mat[2][1], 2) + math.pow(pose_mat[2][2], 2)))
+        try:
+            self.yaw = 180 / math.pi * math.atan(pose_mat[1][0] / pose_mat[0][0])
+        except ZeroDivisionError:
+            self.yaw = 0
+        try:
+            self.pitch = 180 / math.pi * math.atan(
+                -1 * pose_mat[2][0] / math.sqrt(pow(pose_mat[2][1], 2) + math.pow(pose_mat[2][2], 2)))
+        except ZeroDivisionError:
+            self.pitch = 0
 
-        self.roll = 180 / math.pi * math.atan(pose_mat[2][1] / pose_mat[2][2])
-
+        try:
+            self.roll = 180 / math.pi * math.atan(pose_mat[2][1] / pose_mat[2][2])
+        except ZeroDivisionError:
+            self.roll = 0
         self.axis = pControllerState.rAxis[1].x
         self.trackpadX = pControllerState.rAxis[0].x
         self.trackpadY = pControllerState.rAxis[0].y
