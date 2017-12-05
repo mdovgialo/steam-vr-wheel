@@ -173,6 +173,10 @@ class HandsImage:
             self.vroverlay.setOverlayFromFile(self.r_ovr, self.r_open_png.encode())
             self._handr_closed = False
 
+    def hide(self):
+        check_result(self.vroverlay.hideOverlay(self.l_ovr))
+        check_result(self.vroverlay.hideOverlay(self.r_ovr))
+
 
 class SteeringWheelImage:
     def __init__(self, x=0, y=-0.4, z=-0.35, size=0.55):
@@ -246,6 +250,9 @@ class SteeringWheelImage:
 
         fn = self.vroverlay.function_table.setOverlayTransformAbsolute
         fn(self.wheel, openvr.TrackingUniverseSeated, openvr.byref(result))
+
+    def hide(self):
+        check_result(self.vroverlay.hideOverlay(self.wheel))
 
 
 class Point:
@@ -458,13 +465,7 @@ class Wheel(VirtualPad):
             return
 
 
-
-    def update(self, left_ctr, right_ctr):
-        if self.hands_overlay is None:
-            self.hands_overlay = HandsImage(left_ctr, right_ctr)
-        super().update(left_ctr, right_ctr)
-
-        angle = self._wheel_update(left_ctr, right_ctr)
+    def _wheel_update_common(self, angle, left_ctr, right_ctr):
         if angle:
             self._wheel_angles.append(angle)
 
@@ -473,10 +474,18 @@ class Wheel(VirtualPad):
         self.inertia()
         self.center_force()
         self.limiter(left_ctr, right_ctr)
-
-
-
         self.send_to_vjoy()
+
+
+    def update(self, left_ctr, right_ctr):
+        if self.hands_overlay is None:
+            self.hands_overlay = HandsImage(left_ctr, right_ctr)
+        super().update(left_ctr, right_ctr)
+
+        angle = self._wheel_update(left_ctr, right_ctr)
+
+        self._wheel_update_common(angle, left_ctr, right_ctr)
+
         self.render()
         self.render_hands()
 

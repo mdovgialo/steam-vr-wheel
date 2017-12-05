@@ -1,0 +1,7 @@
+
+
+“For future reference so I can document it:
+
+Blender - open new file Import OBJ file File > Import Select object, Set Origin on the left, Geometry to Origin Select only the geometry you want File > Export as obj, ensure "Triangulate Faces", "Write Normals" and "Export Selection" are selected (so it doesn't export cameras and lights). Leave everything else at default Open textures in Photoshop and make sure they are 1, 2, 4 or 8-bits per channel (Image > Mode), best leave as RGB as I haven't tested Indexed SteamVR appears to insist on a texture map, coloured vertexes aren't sufficient, so make sure a texture map is used and not just a coloured material.”
+
+Cueball61
