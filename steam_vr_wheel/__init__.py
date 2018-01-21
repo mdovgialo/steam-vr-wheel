@@ -13,7 +13,7 @@ else:
 DEFAULT_CONFIG = dict(trigger_pre_press_button=True, trigger_press_button=True, multibutton_trackpad=True,
                       multibutton_trackpad_center_haptic=True, touchpad_always_updates=True, vertical_wheel=True,
                       joystick_updates_only_when_grabbed=False, joystick_grabbing_switch=False, edit_mode=False,
-                      wheel_center=[0, -0.4, -0.35], wheel_size=0.55)
+                      wheel_center=[0, -0.4, -0.35], wheel_size=0.55, wheel_grabbed_by_grip=True)
 
 
 class ConfigException(Exception):
@@ -198,6 +198,17 @@ class PadConfig:
     def wheel_size(self, x: bool):
         with self.data_lock:
             self._data['wheel_size'] = x
+        self._write()
+
+    @property
+    def wheel_grabbed_by_grip(self):
+        with self.data_lock:
+            return self._data['wheel_grabbed_by_grip']
+
+    @wheel_grabbed_by_grip.setter
+    def wheel_grabbed_by_grip(self, x: bool):
+        with self.data_lock:
+            self._data['wheel_grabbed_by_grip'] = x
         self._write()
 
 

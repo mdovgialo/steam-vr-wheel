@@ -292,6 +292,10 @@ class Wheel(VirtualPad):
         self._grab_started_point = None
         self._wheel_grab_offset = 0
 
+        # for manual grab:
+        self._left_controller_grabbed = False
+        self._right_controller_grabbed = False
+
     def point_in_holding_bounds(self, point):
         width = 0.10
         a = self.size/2 + width
@@ -358,14 +362,29 @@ class Wheel(VirtualPad):
 
         return False
 
-    def _wheel_update(self, left_ctr, right_ctr):
+    def set_button_press(self, button, hand):
+        super().set_button_press(button, hand)
+        if button == openvr.k_EButton_Grip and hand == 'left':
+            self._left_controller_grabbed = not self._left_controller_grabbed
 
-        right_bound = self.point_in_holding_bounds(right_ctr)
-        left_bound = self.point_in_holding_bounds(left_ctr)
+        if button == openvr.k_EButton_Grip and hand == 'right':
+            self._right_controller_grabbed = not self._right_controller_grabbed
 
-
-        if self.ready_to_unsnap(left_ctr, right_ctr):
+        if self._right_controller_grabbed and self._left_controller_grabbed:
+            pass
+        else:
             self._snapped = False
+
+    def _wheel_update(self, left_ctr, right_ctr):
+        if self.config.wheel_grabbed_by_grip:
+            left_bound, right_bound = self._left_controller_grabbed, self._right_controller_grabbed
+        else: # automatic gripping
+            right_bound = self.point_in_holding_bounds(right_ctr)
+            left_bound = self.point_in_holding_bounds(left_ctr)
+
+
+            if self.ready_to_unsnap(left_ctr, right_ctr):
+                self._snapped = False
 
         if right_bound and left_bound and not self._snapped:
             self.is_held([left_ctr, right_ctr])
@@ -385,7 +404,6 @@ class Wheel(VirtualPad):
             return None
         angle = self.wheel_raw_angle(controller) + self._wheel_grab_offset
         return angle
-
 
     def calculate_grab_offset(self, raw_angle=None):
         if raw_angle is None:
