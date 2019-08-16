@@ -362,15 +362,35 @@ class Wheel(VirtualPad):
 
         return False
 
+    def set_button_unpress(self, button, hand):
+        super().set_button_unpress(button, hand)
+        if self.config.wheel_grabbed_by_grip_toggle:
+            if button == openvr.k_EButton_Grip and hand == 'left':
+                self._left_controller_grabbed = False
+
+            if button == openvr.k_EButton_Grip and hand == 'right':
+                self._right_controller_grabbed = False
+
+            if self._right_controller_grabbed or self._left_controller_grabbed:
+                pass
+            else:
+                self._snapped = False
+
     def set_button_press(self, button, hand):
         super().set_button_press(button, hand)
         if button == openvr.k_EButton_Grip and hand == 'left':
-            self._left_controller_grabbed = not self._left_controller_grabbed
+            if self.config.wheel_grabbed_by_grip_toggle:
+                self._left_controller_grabbed = True
+            else:
+                self._left_controller_grabbed = not self._left_controller_grabbed
 
         if button == openvr.k_EButton_Grip and hand == 'right':
-            self._right_controller_grabbed = not self._right_controller_grabbed
+            if self.config.wheel_grabbed_by_grip_toggle:
+                self._right_controller_grabbed = True
+            else:
+                self._right_controller_grabbed = not self._right_controller_grabbed
 
-        if self._right_controller_grabbed and self._left_controller_grabbed:
+        if self._right_controller_grabbed or self._left_controller_grabbed:
             pass
         else:
             self._snapped = False
@@ -381,8 +401,6 @@ class Wheel(VirtualPad):
         else: # automatic gripping
             right_bound = self.point_in_holding_bounds(right_ctr)
             left_bound = self.point_in_holding_bounds(left_ctr)
-
-
             if self.ready_to_unsnap(left_ctr, right_ctr):
                 self._snapped = False
 

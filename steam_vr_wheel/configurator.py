@@ -21,7 +21,8 @@ class ConfiguratorApp:
         self.joystick_updates_only_when_grabbed_box = wx.CheckBox(self.pnl, label='Joystick moves only when grabbed (by right grip)')
         self.joystick_grabbing_switch_box = wx.CheckBox(self.pnl, label='Joystick grab is a switch')
         self.edit_mode_box = wx.CheckBox(self.pnl, label='Layout edit mode')
-        self.wheel_grabbed_by_grip_box = wx.CheckBox(self.pnl, label='Wheel grabbing by grip toggle')
+        self.wheel_grabbed_by_grip_box = wx.CheckBox(self.pnl, label='Manual wheel grabbing')
+        self.wheel_grabbed_by_grip_box_toggle = wx.CheckBox(self.pnl, label='Continuous (index, checked) or toggle (vive) wheel gripping')
 
         self.trigger_pre_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.trigger_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
@@ -33,6 +34,7 @@ class ConfiguratorApp:
         self.joystick_grabbing_switch_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.edit_mode_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.wheel_grabbed_by_grip_box.Bind(wx.EVT_CHECKBOX, self.config_change)
+        self.wheel_grabbed_by_grip_box_toggle.Bind(wx.EVT_CHECKBOX, self.config_change)
 
         self._config_map = dict(trigger_pre_press_button=self.trigger_pre_btn_box,
                                 trigger_press_button=self.trigger_btn_box,
@@ -44,6 +46,8 @@ class ConfiguratorApp:
                                 joystick_grabbing_switch=self.joystick_grabbing_switch_box,
                                 edit_mode=self.edit_mode_box,
                                 wheel_grabbed_by_grip=self.wheel_grabbed_by_grip_box,
+                                wheel_grabbed_by_grip_toggle=self.wheel_grabbed_by_grip_box_toggle,
+
                                 )
 
         self.vbox.Add(self.trigger_pre_btn_box)
@@ -56,6 +60,7 @@ class ConfiguratorApp:
         self.vbox.Add(self.joystick_grabbing_switch_box)
         self.vbox.Add(self.edit_mode_box)
         self.vbox.Add(self.wheel_grabbed_by_grip_box)
+        self.vbox.Add(self.wheel_grabbed_by_grip_box_toggle)
 
         self.pnl.SetSizer(self.vbox)
         self.read_config()
@@ -76,12 +81,9 @@ class ConfiguratorApp:
         for key, item in self._config_map.items():
             item.Set3StateValue(getattr(self.config, key))
 
-
     def config_change(self, event):
         for key, item in self._config_map.items():
             setattr(self.config, key, item.IsChecked())
-
-
 
     def run(self):
         self.app.MainLoop()

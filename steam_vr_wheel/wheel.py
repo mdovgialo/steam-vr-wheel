@@ -139,8 +139,4 @@ def main(type='wheel'):
             time.sleep(left)
 
 if __name__ == '__main__':
-
-
-
-
     main()
