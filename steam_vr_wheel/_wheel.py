@@ -6,8 +6,8 @@ import openvr
 import os
 import copy
 
-from steam_vr_wheel._virtualpad import VirtualPad
-from steam_vr_wheel.pyvjoy import HID_USAGE_Z
+from steam_vr_wheel._virtualpad import VirtualPad, RightTrackpadAxisDisablerMixin
+from steam_vr_wheel.pyvjoy import HID_USAGE_X
 
 
 
@@ -267,7 +267,7 @@ class GrabControllerPoint(Point):
         self.id = id
 
 
-class Wheel(VirtualPad):
+class Wheel(RightTrackpadAxisDisablerMixin, VirtualPad):
     def __init__(self, inertia=0.95, center_speed=pi/180):
         super().__init__()
         self.vrsys = openvr.VRSystem()
@@ -371,7 +371,7 @@ class Wheel(VirtualPad):
             if button == openvr.k_EButton_Grip and hand == 'right':
                 self._right_controller_grabbed = False
 
-            if self._right_controller_grabbed or self._left_controller_grabbed:
+            if self._right_controller_grabbed and self._left_controller_grabbed:
                 pass
             else:
                 self._snapped = False
@@ -390,7 +390,7 @@ class Wheel(VirtualPad):
             else:
                 self._right_controller_grabbed = not self._right_controller_grabbed
 
-        if self._right_controller_grabbed or self._left_controller_grabbed:
+        if self._right_controller_grabbed and self._left_controller_grabbed:
             pass
         else:
             self._snapped = False
@@ -464,7 +464,7 @@ class Wheel(VirtualPad):
     def send_to_vjoy(self):
         wheel_turn = self._wheel_angles[-1] / (2 * pi)
         axisX = int((-wheel_turn / FULLTURN + 0.5) * 0x8000)
-        self.device.set_axis(HID_USAGE_Z, axisX)
+        self.device.set_axis(HID_USAGE_X, axisX)
 
     def render(self):
         wheel_angle = self._wheel_angles[-1]
