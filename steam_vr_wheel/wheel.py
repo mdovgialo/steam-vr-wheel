@@ -23,7 +23,7 @@ else:
     DEBUG = False
 
 def do_work(vrsystem, left_controller: Controller, right_controller: Controller, wheel: Wheel, poses):
-    vrsystem.getDeviceToAbsoluteTrackingPose(openvr.TrackingUniverseSeated, 0, len(poses), poses)
+    vrsystem.getDeviceToAbsoluteTrackingPose(openvr.TrackingUniverseSeated, 0, poses)
     left_controller.update(poses[left_controller.id.value])
     right_controller.update(poses[right_controller.id.value])
     event = openvr.VREvent_t()
@@ -100,6 +100,12 @@ def get_controller_ids():
 def main(type='wheel'):
     openvr.init(openvr.VRApplication_Overlay)
     vrsystem = openvr.VRSystem()
+    input = openvr.VRInput()
+
+    manifest_dir = os.path.dirname(os.path.abspath(__file__))
+    input.setActionManifestPath(os.path.join(manifest_dir, 'actions.json'))
+    print('hhhhhhhhhhhhhhhhh', os.path.join(manifest_dir, 'actions.json'))
+
     hands_got = False
 
 
