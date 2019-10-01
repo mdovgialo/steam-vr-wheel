@@ -1,0 +1,17 @@
+{
+  "source": "builtin",
+  "applications": [
+    {
+	  "app_key": "mdovgialo.steamvrwheel",
+	  "image_path": "https://raw.githubusercontent.com/mdovgialo/steam-vr-wheel/01d02d9036d5a718b570b5a3316d9a3989f0f7f2/steam_vr_wheel/media/steering_wheel.png",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "strings": {
+        "en_us": {
+          "name": "Steam VR Wheel",
+          "description": "Virtual USB wheel/joystick/gamepad."
+        }
+      }
+    }
+  ]
+}
