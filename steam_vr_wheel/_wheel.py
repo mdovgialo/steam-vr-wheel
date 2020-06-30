@@ -464,7 +464,7 @@ class Wheel(RightTrackpadAxisDisablerMixin, VirtualPad):
         sign = 1
         if angle < 0:
             sign = -1
-        if abs(angle) < self._center_speed * self.config.wheel_centerforce and not self._left_controller_grabbed and not self._right_controller_grabbed:
+        if abs(angle) < self._center_speed * self.config.wheel_centerforce:
             self._wheel_angles[-1] = 0
             return
         self._wheel_angles[-1] -= self._center_speed * self.config.wheel_centerforce * sign
@@ -516,7 +516,8 @@ class Wheel(RightTrackpadAxisDisablerMixin, VirtualPad):
         self.unwrap_wheel_angles()
 
         self.inertia()
-        self.center_force()
+        if (not self._left_controller_grabbed) and (not self._right_controller_grabbed):
+            self.center_force()
         self.limiter(left_ctr, right_ctr)
         self.send_to_vjoy()
 
