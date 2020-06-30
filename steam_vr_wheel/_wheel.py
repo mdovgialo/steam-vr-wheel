@@ -177,6 +177,10 @@ class HandsImage:
         check_result(self.vroverlay.hideOverlay(self.l_ovr))
         check_result(self.vroverlay.hideOverlay(self.r_ovr))
 
+    def show(self):
+        check_result(self.vroverlay.showOverlay(self.l_ovr))
+        check_result(self.vroverlay.showOverlay(self.r_ovr))
+
 
 class SteeringWheelImage:
     def __init__(self, x=0, y=-0.4, z=-0.35, size=0.55):
@@ -253,6 +257,10 @@ class SteeringWheelImage:
 
     def hide(self):
         check_result(self.vroverlay.hideOverlay(self.wheel))
+
+    def show(self):
+        check_result(self.vroverlay.showOverlay(self.wheel))
+
 
 
 class Point:
@@ -456,14 +464,14 @@ class Wheel(RightTrackpadAxisDisablerMixin, VirtualPad):
         sign = 1
         if angle < 0:
             sign = -1
-        if abs(angle) < self._center_speed:
+        if abs(angle) < self._center_speed * self.config.wheel_centerforce:
             self._wheel_angles[-1] = 0
             return
         self._wheel_angles[-1] -= self._center_speed * sign
 
     def send_to_vjoy(self):
         wheel_turn = self._wheel_angles[-1] / (2 * pi)
-        axisX = int((-wheel_turn / FULLTURN + 0.5) * 0x8000)
+        axisX = int((-wheel_turn / (self.config.wheel_degrees / 360) + 0.5) * 0x8000)
         self.device.set_axis(HID_USAGE_X, axisX)
 
     def render(self):
@@ -474,7 +482,7 @@ class Wheel(RightTrackpadAxisDisablerMixin, VirtualPad):
             self.wheel_image.rotate([-wheel_angle, np.pi / 2], [2, 0])
 
     def limiter(self, left_ctr, right_ctr):
-        if abs(self._wheel_angles[-1])/(2*pi)>FULLTURN/2:
+        if abs(self._wheel_angles[-1])/(2*pi)>(self.config.wheel_degrees / 360)/2:
             self._wheel_angles[-1] = self._wheel_angles[-2]
             openvr.VRSystem().triggerHapticPulse(left_ctr.id, 0, 3000)
             openvr.VRSystem().triggerHapticPulse(right_ctr
@@ -521,9 +529,17 @@ class Wheel(RightTrackpadAxisDisablerMixin, VirtualPad):
         angle = self._wheel_update(left_ctr, right_ctr)
 
         self._wheel_update_common(angle, left_ctr, right_ctr)
+        if self.config.wheel_show_wheel:
+            self.wheel_image.show()
+            self.render()
+        else:
+            self.wheel_image.hide()
 
-        self.render()
-        self.render_hands()
+        if self.config.wheel_show_hands:
+            self.hands_overlay.show()
+            self.render_hands()
+        else:
+            self.hands_overlay.hide()
 
     def move_wheel(self, right_ctr, left_ctr):
         self.center = Point(right_ctr.x, right_ctr.y, right_ctr.z)
@@ -537,6 +553,10 @@ class Wheel(RightTrackpadAxisDisablerMixin, VirtualPad):
 
     def edit_mode(self, left_ctr, right_ctr):
         result, state_r = openvr.VRSystem().getControllerState(right_ctr.id)
+        if self.hands_overlay != None:
+            self.hands_overlay.show()
+        if self.wheel_image != None:
+            self.wheel_image.show()
         if state_r.ulButtonPressed:
             if list(reversed(bin(state_r.ulButtonPressed)[2:])).index('1') == openvr.k_EButton_SteamVR_Trigger:
                  self.move_wheel(right_ctr, left_ctr)

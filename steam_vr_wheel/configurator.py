@@ -23,6 +23,10 @@ class ConfiguratorApp:
         self.edit_mode_box = wx.CheckBox(self.pnl, label='Layout edit mode')
         self.wheel_grabbed_by_grip_box = wx.CheckBox(self.pnl, label='Manual wheel grabbing')
         self.wheel_grabbed_by_grip_box_toggle = wx.CheckBox(self.pnl, label='Continuous (index, checked) or toggle (vive) wheel gripping')
+        self.wheel_show_wheel = wx.CheckBox(self.pnl, label="Show Wheel Overlay")
+        self.wheel_show_hands = wx.CheckBox(self.pnl, label="Show Hands Overlay")
+        self.wheel_degrees = wx.SpinCtrl(self.pnl, name = "Wheel Degrees", max = 10000)
+        self.wheel_centerforce = wx.SpinCtrl(self.pnl, name = "Center Force")
 
         self.trigger_pre_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.trigger_btn_box.Bind(wx.EVT_CHECKBOX, self.config_change)
@@ -35,6 +39,10 @@ class ConfiguratorApp:
         self.edit_mode_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.wheel_grabbed_by_grip_box.Bind(wx.EVT_CHECKBOX, self.config_change)
         self.wheel_grabbed_by_grip_box_toggle.Bind(wx.EVT_CHECKBOX, self.config_change)
+        self.wheel_show_wheel.Bind(wx.EVT_CHECKBOX, self.config_change)
+        self.wheel_show_hands.Bind(wx.EVT_CHECKBOX, self.config_change)
+        self.wheel_degrees.Bind(wx.EVT_SPINCTRL, self.config_change)
+        self.wheel_centerforce.Bind(wx.EVT_SPINCTRL, self.config_change)
 
         self._config_map = dict(trigger_pre_press_button=self.trigger_pre_btn_box,
                                 trigger_press_button=self.trigger_btn_box,
@@ -47,7 +55,10 @@ class ConfiguratorApp:
                                 edit_mode=self.edit_mode_box,
                                 wheel_grabbed_by_grip=self.wheel_grabbed_by_grip_box,
                                 wheel_grabbed_by_grip_toggle=self.wheel_grabbed_by_grip_box_toggle,
-
+                                wheel_show_wheel=self.wheel_show_wheel,
+                                wheel_show_hands=self.wheel_show_hands,
+                                wheel_degrees=self.wheel_degrees,
+                                wheel_centerforce=self.wheel_centerforce
                                 )
 
         self.vbox.Add(self.trigger_pre_btn_box)
@@ -61,9 +72,18 @@ class ConfiguratorApp:
         self.vbox.Add(self.edit_mode_box)
         self.vbox.Add(self.wheel_grabbed_by_grip_box)
         self.vbox.Add(self.wheel_grabbed_by_grip_box_toggle)
+        self.vbox.Add(self.wheel_show_wheel)
+        self.vbox.Add(self.wheel_show_hands)
+        self.vbox.AddSpacer(10)
+        self.vbox.Add(wx.StaticText(self.pnl, label = "Degrees"))
+        self.vbox.Add(self.wheel_degrees)
+        self.vbox.AddSpacer(10)
+        self.vbox.Add(wx.StaticText(self.pnl, label = "Center Force"))
+        self.vbox.Add(self.wheel_centerforce)
 
-        self.pnl.SetSizer(self.vbox)
+        self.pnl.SetSizerAndFit(self.vbox)
         self.read_config()
+        self.window.Fit()
         self.window.Show(True)
 
     def read_config(self):
@@ -79,11 +99,11 @@ class ConfiguratorApp:
             else:
                 sys.exit(1)
         for key, item in self._config_map.items():
-            item.Set3StateValue(getattr(self.config, key))
+            item.SetValue(getattr(self.config, key))
 
     def config_change(self, event):
         for key, item in self._config_map.items():
-            setattr(self.config, key, item.IsChecked())
+            setattr(self.config, key, item.GetValue())
 
     def run(self):
         self.app.MainLoop()
