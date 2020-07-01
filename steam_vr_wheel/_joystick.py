@@ -42,6 +42,7 @@ class Throttle():
 
 class Joystick(RightTrackpadAxisDisablerMixin, LeftTrackpadAxisDisablerMixin, VirtualPad):
     def __init__(self):
+        self.amplification = 10
         super().__init__()
         self.x = 0
         self.y = 0
@@ -97,8 +98,8 @@ class Joystick(RightTrackpadAxisDisablerMixin, LeftTrackpadAxisDisablerMixin, Vi
 
     def _update_joystick_normal(self, axisX, axisY, axisZ):
 
-        self.device.set_axis(HID_USAGE_X, int(axisX * 0x8000))
-        self.device.set_axis(HID_USAGE_Y, int(axisY * 0x8000))
+        self.device.set_axis(HID_USAGE_X, int(axisX * self.amplification * 0x8000))
+        self.device.set_axis(HID_USAGE_Y, int(axisY * self.amplification * 0x8000))
         self.device.set_axis(HID_USAGE_Z, int(axisZ * 0x8000))
 
     def _update_grabbable_joystick(self, axisX, axisY, axisZ):
@@ -107,8 +108,8 @@ class Joystick(RightTrackpadAxisDisablerMixin, LeftTrackpadAxisDisablerMixin, Vi
         self.grabbable_y.update(axisY)
         self.grabbable_z.update(axisZ)
 
-        self.device.set_axis(HID_USAGE_X, int(self.grabbable_x.x * 0x8000))
-        self.device.set_axis(HID_USAGE_Y, int(self.grabbable_y.x * 0x8000))
+        self.device.set_axis(HID_USAGE_X, int(self.grabbable_x.x * self.amplification * 0x8000))
+        self.device.set_axis(HID_USAGE_Y, int(self.grabbable_y.x * self.amplification * 0x8000))
         self.device.set_axis(HID_USAGE_Z, int(self.grabbable_z.x * 0x8000))
 
     def update(self, left_ctr, right_ctr):
