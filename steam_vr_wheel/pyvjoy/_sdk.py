@@ -188,6 +188,4 @@ class _JOYSTICK_POSITION_V2(Structure):
 		
 		self.bDevice=c_byte(rID)
 		self.bHats=-1
-		
- 
 
