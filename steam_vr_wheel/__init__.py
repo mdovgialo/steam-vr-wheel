@@ -14,7 +14,7 @@ DEFAULT_CONFIG = dict(trigger_pre_press_button=True, trigger_press_button=True, 
                       multibutton_trackpad_center_haptic=True, touchpad_always_updates=True, vertical_wheel=True,
                       joystick_updates_only_when_grabbed=False, joystick_grabbing_switch=False, edit_mode=False,
                       wheel_center=[0, -0.4, -0.35], wheel_size=0.55, wheel_grabbed_by_grip=True,
-                      wheel_grabbed_by_grip_toggle=True)
+                      wheel_grabbed_by_grip_toggle=True, wheel_show_wheel = True, wheel_show_hands = True, wheel_degrees = 1440, wheel_centerforce = 30)
 
 
 class ConfigException(Exception):
@@ -223,4 +223,46 @@ class PadConfig:
             self._data['wheel_grabbed_by_grip_toggle'] = x
         self._write()
 
+    @property
+    def wheel_degrees(self):
+        with self.data_lock:
+            return self._data['wheel_degrees']
 
+    @wheel_degrees.setter
+    def wheel_degrees(self, x: int):
+        with self.data_lock:
+            self._data['wheel_degrees'] = x
+        self._write()
+
+    @property
+    def wheel_centerforce(self):
+        with self.data_lock:
+            return self._data['wheel_centerforce']
+
+    @wheel_centerforce.setter
+    def wheel_centerforce(self, x: int):
+        with self.data_lock:
+            self._data['wheel_centerforce'] = x
+        self._write()
+
+    @property
+    def wheel_show_wheel(self):
+        with self.data_lock:
+            return self._data['wheel_show_wheel']
+
+    @wheel_show_wheel.setter
+    def wheel_show_wheel(self, x: bool):
+        with self.data_lock:
+            self._data['wheel_show_wheel'] = x
+        self._write()
+
+    @property
+    def wheel_show_hands(self):
+        with self.data_lock:
+            return self._data['wheel_show_hands']
+
+    @wheel_show_hands.setter
+    def wheel_show_hands(self, x: bool):
+        with self.data_lock:
+            self._data['wheel_show_hands'] = x
+        self._write()
