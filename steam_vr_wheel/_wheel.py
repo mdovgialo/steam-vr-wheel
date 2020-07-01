@@ -10,10 +10,6 @@ from steam_vr_wheel._virtualpad import VirtualPad, RightTrackpadAxisDisablerMixi
 from steam_vr_wheel.pyvjoy import HID_USAGE_X
 
 
-
-FULLTURN = 4
-
-
 def check_result(result):
     if result:
         error_name = openvr.VROverlay().getOverlayErrorNameFromEnum(result)

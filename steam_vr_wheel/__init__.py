@@ -14,7 +14,8 @@ DEFAULT_CONFIG = dict(trigger_pre_press_button=True, trigger_press_button=True, 
                       multibutton_trackpad_center_haptic=True, touchpad_always_updates=True, vertical_wheel=True,
                       joystick_updates_only_when_grabbed=False, joystick_grabbing_switch=False, edit_mode=False,
                       wheel_center=[0, -0.4, -0.35], wheel_size=0.55, wheel_grabbed_by_grip=True,
-                      wheel_grabbed_by_grip_toggle=True, wheel_show_wheel = True, wheel_show_hands = True, wheel_degrees = 1440, wheel_centerforce = 30)
+                      wheel_grabbed_by_grip_toggle=True, wheel_show_wheel=True, wheel_show_hands=True,
+                      wheel_degrees=1440, wheel_centerforce=3)
 
 
 class ConfigException(Exception):
