@@ -50,8 +50,8 @@ class Joystick(RightTrackpadAxisDisablerMixin, LeftTrackpadAxisDisablerMixin, Vi
         self.throttle_y = Throttle(size=0.2)
         self.throttle_x = Throttle(size=90)
 
-        self.grabbable_x = Throttle(size=1, starting=0.5)
-        self.grabbable_y = Throttle(size=1, starting=0.5)
+        self.grabbable_x = Throttle(size=1, starting=0.5/self.amplification)
+        self.grabbable_y = Throttle(size=1, starting=0.5/self.amplification)
         self.grabbable_z = Throttle(size=1, starting=0.5)
 
         self.joystick_grabbed = False
