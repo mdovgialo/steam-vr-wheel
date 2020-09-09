@@ -2,6 +2,14 @@
 Wheel emulation using steamVR
 =============================
 
+If you just want to use this go to:
+===================================
+https://github.com/mdovgialo/steam-vr-wheel/releases
+
+
+For developers:
+================
+
 Requires pyopenvr, wxpython (codename phoenix), and vjoy ( http://vjoystick.sourceforge.net/site/ Public domain )
 
 Uses pyvjoy binding from https://github.com/tidzo/pyvjoy
@@ -17,9 +25,7 @@ https://www.youtube.com/watch?v=jjb92HQ0M74
 
 
 
-If you just want to use this go to:
-===================================
-https://github.com/mdovgialo/steam-vr-wheel/releases
+
 
 
 Instalation from sources (for developers):
