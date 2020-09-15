@@ -1,9 +1,11 @@
+import ctypes
 import sys
 
 import openvr
 import time
 
 from steam_vr_wheel.configurator import ConfiguratorApp
+from steam_vr_wheel.generate_buttons_actions import get_action_sets_for_type
 from steam_vr_wheel.pyvjoy.vjoydevice import VJoyDevice, HID_USAGE_SL0, HID_USAGE_SL1, HID_USAGE_X, HID_USAGE_Y, HID_USAGE_RX, HID_USAGE_RY
 from steam_vr_wheel.vrcontroller import Controller
 from . import PadConfig, ConfigException
@@ -32,14 +34,29 @@ def run_configurator():
 class VirtualPad:
     trackpad_left_enabled = True
     trackpad_right_enabled = True
+    special_action_set_name = 'gamepad'
     def __init__(self):
         self.init_config()
+        self._input = openvr.VRInput()
         device = 1
         try:
             device = int(sys.argv[1])
         except:
             print('selecting default')
             pass
+        self._default_action_set = get_action_sets_for_type('default')
+        self._default_action_set_handle = self._input.getActionSetHandle('/action/default')
+        self._special_action_set = get_action_sets_for_type(self.special_action_set_name)
+        self._special_action_set_handle = self._input.getActionSetHandle('/action/{}'.format(self.special_action_set_name))
+
+        for l in self._default_action_set:
+            for action in l:
+                action['handle'] = self._input.getActionHandle(action['name'])
+
+        for l in self._special_action_set:
+            for action in l:
+                action['handle'] = self._input.getActionHandle(action['name'])
+
         self.device = VJoyDevice(device)
         self.trackpadRtouch = False
         self.trackpadLtouch = False
@@ -177,7 +194,46 @@ class VirtualPad:
                 return True
         return False
 
+    def update_buttons(self, set, ctr):
+        for action in set[0]:
+            actionData = self._input.getDigitalActionData(action['handle'], ctr.id.value)
+            try:
+                if actionData.bChanged:
+                    self.device.set_button(action['vjoy_btn_nr'], actionData.bState)
+            except KeyError:
+                pass
+
+    def update_axis(self, set, ctr):
+        for action in set[1]:
+            actionData = self._input.getAnalogActionData(action['handle'], ctr.id.value)
+            print(action['name'], actionData.x)
+
+
     def update(self, left_ctr: Controller, right_ctr: Controller):
+        # self._input.updateActionState(self._default_action_set_handle)
+        active_set_dev_default = openvr.VRActiveActionSet_t()
+
+        active_set_dev_default.ulActionSet = self._default_action_set_handle
+        active_set_dev_default.ulRestrictedToDevice = openvr.k_ulInvalidInputValueHandle
+        active_set_dev_default.ulSecondaryActionSet = openvr.k_ulInvalidInputValueHandle
+        active_set_dev_default.nPriority = 1
+
+        active_set_dev_special = openvr.VRActiveActionSet_t()
+
+        active_set_dev_special.ulActionSet = self._special_action_set_handle
+        active_set_dev_special.ulRestrictedToDevice = openvr.k_ulInvalidInputValueHandle
+        active_set_dev_special.ulSecondaryActionSet = openvr.k_ulInvalidInputValueHandle
+        active_set_dev_special.nPriority = 1
+
+        py_set_array = [active_set_dev_default, active_set_dev_special]
+        set_array = (openvr.VRActiveActionSet_t * len(py_set_array))(*py_set_array)
+        self._input.updateActionState(set_array)
+        self.update_buttons(self._default_action_set, left_ctr)
+        self.update_buttons(self._default_action_set, right_ctr)
+        self.update_buttons(self._special_action_set, left_ctr)
+        self.update_buttons(self._special_action_set, right_ctr)
+        self.update_axis(self._special_action_set, left_ctr)
+
         self.device.set_axis(HID_USAGE_SL0, int(left_ctr.axis * 0x8000))
         self.device.set_axis(HID_USAGE_SL1, int(right_ctr.axis * 0x8000))
         self.trackpadLX = left_ctr.trackpadX

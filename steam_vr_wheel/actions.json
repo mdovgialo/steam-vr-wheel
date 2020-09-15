@@ -1,0 +1,2868 @@
+{
+  "default_bindings": [
+    {
+      "controller_type": "vive_controller",
+      "binding_url": "bindings_vive_controller.json"
+    },
+    {
+      "controller_type": "oculus_touch",
+      "binding_url": "bindings_oculus_touch.json"
+    },
+    {
+      "controller_type": "knuckles",
+      "binding_url": "bindings_knuckles.json"
+    },
+    {
+      "controller_type": "holographic_controller",
+      "binding_url": "bindings_holographic_controller.json"
+    }
+  ], 
+  "actions":[
+          {
+            "name": "/actions/joystick/in/button_1",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_2",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_3",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_4",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_5",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_6",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_7",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_8",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_9",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_10",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_11",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_12",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_13",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_14",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_15",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_16",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_17",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_18",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_19",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_20",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_21",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_22",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_23",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_24",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_25",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_26",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_27",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_28",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_29",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_30",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_31",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_32",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_33",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_34",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_35",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_36",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_37",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_38",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_39",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_40",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_41",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_42",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_43",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_44",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_45",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_46",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_47",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_48",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_49",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_50",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_51",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_52",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_53",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_54",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_55",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_56",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_57",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_58",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_59",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_60",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_61",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_62",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_63",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_64",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_65",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_66",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_67",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_68",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_69",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_70",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_71",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_72",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_73",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_74",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_75",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_76",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_77",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_78",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_79",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_80",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_81",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_82",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_83",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_84",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_85",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_86",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_87",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_88",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_89",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_90",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_91",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_92",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_93",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_94",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_95",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_96",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_97",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_98",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_99",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_100",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_101",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_102",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_103",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_104",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_105",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_106",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_107",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_108",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_109",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_110",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_111",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_112",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_113",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_114",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_115",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_116",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_117",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_118",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_119",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_120",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_121",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_122",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_123",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_124",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_125",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_126",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_127",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/button_128",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_x",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_y",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_zrx",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_ry",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_rz",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_slider0",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_slider1",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_x_y",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_rx_ry",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_z_rz",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/axis_slider0_slider1",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_1",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_2",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_3",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_4",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_5",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_6",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_7",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_8",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_9",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_10",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_11",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_12",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_13",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_14",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_15",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_16",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_17",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_18",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_19",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_20",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_21",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_22",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_23",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_24",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_25",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_26",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_27",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_28",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_29",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_30",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_31",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_32",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_33",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_34",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_35",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_36",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_37",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_38",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_39",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_40",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_41",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_42",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_43",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_44",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_45",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_46",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_47",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_48",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_49",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_50",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_51",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_52",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_53",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_54",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_55",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_56",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_57",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_58",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_59",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_60",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_61",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_62",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_63",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_64",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_65",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_66",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_67",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_68",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_69",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_70",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_71",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_72",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_73",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_74",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_75",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_76",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_77",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_78",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_79",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_80",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_81",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_82",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_83",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_84",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_85",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_86",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_87",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_88",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_89",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_90",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_91",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_92",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_93",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_94",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_95",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_96",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_97",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_98",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_99",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_100",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_101",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_102",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_103",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_104",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_105",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_106",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_107",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_108",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_109",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_110",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_111",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_112",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_113",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_114",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_115",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_116",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_117",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_118",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_119",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_120",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_121",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_122",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_123",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_124",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_125",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_126",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_127",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/button_128",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_x",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_y",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_zrx",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_ry",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_rz",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_slider0",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_slider1",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_x_y",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_rx_ry",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_z_rz",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/axis_slider0_slider1",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_1",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_2",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_3",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_4",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_5",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_6",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_7",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_8",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_9",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_10",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_11",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_12",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_13",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_14",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_15",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_16",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_17",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_18",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_19",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_20",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_21",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_22",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_23",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_24",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_25",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_26",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_27",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_28",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_29",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_30",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_31",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_32",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_33",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_34",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_35",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_36",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_37",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_38",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_39",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_40",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_41",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_42",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_43",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_44",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_45",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_46",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_47",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_48",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_49",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_50",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_51",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_52",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_53",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_54",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_55",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_56",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_57",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_58",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_59",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_60",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_61",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_62",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_63",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_64",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_65",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_66",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_67",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_68",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_69",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_70",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_71",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_72",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_73",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_74",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_75",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_76",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_77",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_78",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_79",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_80",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_81",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_82",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_83",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_84",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_85",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_86",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_87",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_88",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_89",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_90",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_91",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_92",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_93",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_94",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_95",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_96",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_97",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_98",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_99",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_100",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_101",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_102",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_103",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_104",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_105",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_106",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_107",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_108",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_109",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_110",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_111",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_112",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_113",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_114",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_115",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_116",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_117",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_118",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_119",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_120",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_121",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_122",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_123",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_124",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_125",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_126",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_127",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/button_128",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_x",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_y",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_zrx",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_ry",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_rz",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_slider0",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_slider1",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_x_y",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_rx_ry",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_z_rz",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/axis_slider0_slider1",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_1",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_2",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_3",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_4",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_5",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_6",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_7",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_8",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_9",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_10",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_11",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_12",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_13",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_14",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_15",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_16",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_17",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_18",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_19",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_20",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_21",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_22",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_23",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_24",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_25",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_26",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_27",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_28",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_29",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_30",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_31",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_32",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_33",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_34",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_35",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_36",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_37",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_38",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_39",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_40",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_41",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_42",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_43",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_44",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_45",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_46",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_47",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_48",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_49",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_50",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_51",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_52",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_53",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_54",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_55",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_56",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_57",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_58",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_59",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_60",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_61",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_62",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_63",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_64",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_65",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_66",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_67",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_68",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_69",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_70",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_71",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_72",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_73",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_74",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_75",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_76",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_77",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_78",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_79",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_80",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_81",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_82",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_83",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_84",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_85",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_86",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_87",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_88",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_89",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_90",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_91",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_92",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_93",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_94",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_95",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_96",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_97",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_98",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_99",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_100",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_101",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_102",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_103",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_104",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_105",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_106",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_107",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_108",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_109",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_110",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_111",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_112",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_113",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_114",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_115",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_116",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_117",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_118",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_119",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_120",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_121",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_122",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_123",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_124",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_125",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_126",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_127",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/button_128",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_x",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_y",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_zrx",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_ry",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_rz",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_slider0",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_slider1",
+            "type": "vector1",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_x_y",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_rx_ry",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_z_rz",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/gamepad/in/axis_slider0_slider1",
+            "type": "vector2",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/default/in/move_resize_wheel",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/default/in/Pose",
+            "type": "pose"
+      },
+      {
+            "name": "/actions/default/out/Haptic",
+            "type": "vibration"
+      },
+      {
+            "name": "/actions/joystick/in/grab_left",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/joystick/in/grab_right",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/grab_left",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/wheel/in/grab_right",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/grab_left",
+            "type": "boolean",
+            "requirement": "optional"
+      },
+      {
+            "name": "/actions/double_joystick/in/grab_right",
+            "type": "boolean",
+            "requirement": "optional"
+      }
+  ],
+
+  "action_sets": [
+    {
+      "name": "/actions/joystick",
+      "usage": "leftright"
+    },
+    {
+      "name": "/actions/wheel",
+      "usage": "leftright"
+    },
+    {
+      "name": "/actions/double_joystick",
+      "usage": "leftright"
+    },
+    {
+      "name": "/actions/gamepad",
+      "usage": "leftright"
+    },
+    {
+      "name": "/actions/default",
+      "usage": "leftright"
+    }
+  ]
+}
