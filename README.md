@@ -2,6 +2,13 @@
 Wheel emulation using steamVR
 =============================
 
+
+
+News
+=============================
+I've got a wheel and hotas recently, and haven't had much time to work on this anyway. It will continue to work thanks to SteamVR good backward compatability, but don't expect any further updates. If anyone wants to fork and keep developing maintaining this app, they are free to do so under MIT licence.
+
+
 If you just want to use this go to:
 ===================================
 https://github.com/mdovgialo/steam-vr-wheel/releases
